@@ -33,6 +33,7 @@ app.controller('myCtrl', function($scope) {
             $scope.bFee = 6000;
     		$scope.model = ["Nissan Latio", "Suzuki Swift"];
     	}else if($scope.type == "Premium"){
+            $scope.bFee = 10500;
     		$scope.model = [
     			"Honda Fit",
     			"Nissan Bluebird Sylphy",
