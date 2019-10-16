@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src ="bootstrap/js/visjs.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	
+</head>
+<body ng-app="myApp">
+<nav class="navbar navbar-dark bg-primary text-center">
+  <span class="navbar-brand mb-0 h1">Kaizen Auto Form</span>
+</nav>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <form>
+  	<blockquote class="blockquote text-center">
+  	<h1 class="display-4">Personal Information</h1>
+  </blockquote>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputName">Name</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Full Name">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+    </div>
+      <div class="form-group col-md-3">
+      <label for="inputPhone">Phone Number</label>
+      <input type="number" class="form-control" id="inputNumber" placeholder="876454688">
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-2">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="31 Balmoral Avenue">
+  </div>
+    <div class="form-group col-md-2">
+    <label for="inputID">Driver License Number</label>
+    <input type="text" class="form-control" id="inputID" placeholder="ID Number">
+  </div>
+   <div class="form-group col-md-2">
+    <label for="inputCountry">Country of Issue</label>
+    <input type="text" class="form-control" id="inputCountry">
+  </div>
+   <div class="form-group col-md-2">
+    <label for="inputIYear">Issued Year</label>
+    <input type="date" class="form-control" id="inputIYear">
+  </div>
+     <div class="form-group col-md-2">
+    <label for="inputEYear">Expiration Year</label>
+    <input type="date" class="form-control" id="inputEYear">
+  </div>
+  <div class="form-group col-md-2">
+    <label for="inputDOB">Date of Birth</label>
+    <input type="date" class="form-control" id="inputDOB">
+  </div>
+</div>
+  	<blockquote class="blockquote text-center">
+  	<h1 class="display-4">Rental Information</h1>
+  </blockquote>
+	<div class="form-row">
+     <div class="form-group col-md-2">
+    	<label for="inputDays">No. of Days</label>
+    	<input type="number" class="form-control" id="inputDays" placeholder="3">
+  	 </div>
+  	  <div class="form-group col-md-2">
+      <label for="inputType">Vehicle Type</label>
+      <select id="inputType" class="form-control" ng-change="myFunc()" ng-model="type" ng-options="x for x in names">
+      </select>
+    </div>
+     <div class="form-group col-md-2">
+      <label for="inputVehicle">Make and Model</label>
+      <select id="inputVehicle" class="form-control" ng-change="mLinc()" ng-model="vehicle" ng-options="y for y in model">
+      </select>
+    </div>
+      <div class="form-group col-md-2">
+      <label for="inputLicense">License Number</label>
+      <select id="inputLicense" class="form-control" ng-model="license" ng-options="y for y in mLicense">
+      </select>
+    </div>
+     <div class="form-group col-md-2">
+      <label for="inputYear">Year</label>
+      <select id="inputYear" class="form-control" ng-model="year" ng-options="y for y in mYear">
+      </select>
+    </div>
+     <div class="form-group col-md-2">
+      <label for="inputColor">Color</label>
+      <select id="inputColor" class="form-control" ng-model="color" ng-options="y for y in mColor">
+      </select>
+    </div>
+  	</div>
+  	<div class="form-row">
+  	 <div class="form-group col-md-3">
+    <label for="inputStart">Start Date</label>
+    <input type="date" class="form-control" id="inputStart" placeholder="12/02/1998">
+  </div>
+   <div class="form-group col-md-3">
+    <label for="inputReturn">Return Date</label>
+    <input type="date" class="form-control" id="inputReturn" placeholder="12/02/1998">
+  </div>
+   <div class="form-group col-md-3">
+    <label for="inputGas">Gas Level</label>
+    <select class="form-control" id="inputGas" ng-model="gas"    ng-options="x for x in gasLevel">
+    </select>
+  </div>
+   <div class="form-group col-md-2">
+    <label for="inputMileage">Mileage</label>
+    <input type="text" class="form-control" id="inputMileage" placeholder="Mileage">
+  </div>
+</div>
+  	<blockquote class="blockquote text-center">
+  	<h1 class="display-4">Billing Information</h1>
+  </blockquote>
+  <button type="submit" class="btn btn-primary">Input Data</button>
+ </form>
+</div>
+
+</body>
+</html>
