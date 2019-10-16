@@ -9,16 +9,28 @@ app.controller('myCtrl', function($scope) {
     "Family-Sized",
     "Luxury"
     ];
+    $scope.days = 0;
+    $scope.bFee = 0;
+    $scope.oTotal = 0;
     $scope.type = "1";
     $scope.vehicle = "Select"
+
+    $scope.pCheck = function(){
+           if ($scope.type == "Basic" && $scope.days != 0){
+                   $scope.oTotal = 5500 * $scope.days;
+           }
+    }
+
     $scope.myFunc = function(){
     	if($scope.type == "Basic"){
+            $scope.bFee = 5500;
     		$scope.model = [
     		"Mazda Demio", 
     		"Nissan Note",
     		"Nissan Wingroad"
     		];
     	} else if($scope.type == "Standard"){
+            $scope.bFee = 6000;
     		$scope.model = ["Nissan Latio", "Suzuki Swift"];
     	}else if($scope.type == "Premium"){
     		$scope.model = [
@@ -33,8 +45,6 @@ app.controller('myCtrl', function($scope) {
     			"Toyota Crown",
     			"Toyota Mark X"
     		];
-    	}else{
-    		$scope.model = [];
     	}
     };
 

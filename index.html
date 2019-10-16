@@ -59,10 +59,7 @@
   	<h1 class="display-4">Rental Information</h1>
   </blockquote>
 	<div class="form-row">
-     <div class="form-group col-md-2">
-    	<label for="inputDays">No. of Days</label>
-    	<input type="number" class="form-control" id="inputDays" placeholder="3">
-  	 </div>
+
   	  <div class="form-group col-md-2">
       <label for="inputType">Vehicle Type</label>
       <select id="inputType" class="form-control" ng-change="myFunc()" ng-model="type" ng-options="x for x in names">
@@ -88,6 +85,10 @@
       <select id="inputColor" class="form-control" ng-model="color" ng-options="y for y in mColor">
       </select>
     </div>
+         <div class="form-group col-md-2">
+    	<label for="inputDays">No. of Days</label>
+    	<input type="number" class="form-control" ng-change="pCheck()"ng-model="days"id="inputDays" placeholder="3">
+  	 </div>
   	</div>
   	<div class="form-row">
   	 <div class="form-group col-md-3">
@@ -111,7 +112,21 @@
   	<blockquote class="blockquote text-center">
   	<h1 class="display-4">Billing Information</h1>
   </blockquote>
-  <button type="submit" class="btn btn-primary">Input Data</button>
+  <div class="form-row">
+   <div class="form-group col-md-2">
+    <label for="inputBaseFee">Base Fee</label>
+    <input type="number" class="form-control" ng-model="bFee"id="inputBaseFee" disabled>
+   </div>
+   <div class="form-group col-md-2">
+       <label for="inputOTotal">Total Amount Owed</label>
+    <input type="number" class="form-control" ng-model="oTotal" id="inputOTotal" disabled>
+   </div>
+   <div class="form-group col-md-2">
+       <label for="inputPTotal">Total Amount Paid</label>
+    <input type="number" class="form-control" ng-model="pTotal" id="inputPTotal" placeholder="Total Paid">
+   </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
  </form>
 </div>
 
