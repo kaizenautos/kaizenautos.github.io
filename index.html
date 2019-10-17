@@ -2,9 +2,15 @@
 <html lang="en-US">
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src ="js/visjs.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+ 
+    $('#myModal').modal('show');
+
+</script>
 </head>
 <body ng-app="myApp">
 <nav class="navbar navbar-dark bg-primary text-center">
@@ -18,15 +24,15 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputName">Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Full Name">
+      <input type="text" class="form-control" ng-model="name" id="inputName" placeholder="Full Name">
     </div>
     <div class="form-group col-md-4">
       <label for="inputEmail">Email</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+      <input type="email" class="form-control" ng-model="email" id="inputEmail" placeholder="Email">
     </div>
       <div class="form-group col-md-3">
       <label for="inputPhone">Phone Number</label>
-      <input type="number" class="form-control" id="inputNumber" placeholder="876454688">
+      <input type="number" class="form-control" ng-model="contact" id="inputNumber" placeholder="876454688">
     </div>
   </div>
   <div class="form-row">
@@ -36,23 +42,23 @@
   </div>
     <div class="form-group col-md-2">
     <label for="inputID">Driver License Number</label>
-    <input type="text" class="form-control" id="inputID" placeholder="ID Number">
+    <input type="text" class="form-control" ng-model="dLicence" id="inputID" placeholder="ID Number">
   </div>
    <div class="form-group col-md-2">
     <label for="inputCountry">Country of Issue</label>
-    <input type="text" class="form-control" id="inputCountry">
+    <input type="text" class="form-control" ng-model="country" id="inputCountry">
   </div>
    <div class="form-group col-md-2">
     <label for="inputIYear">Issued Year</label>
-    <input type="date" class="form-control" id="inputIYear">
+    <input type="date" class="form-control" ng-model="issuedYear" id="inputIYear">
   </div>
      <div class="form-group col-md-2">
     <label for="inputEYear">Expiration Year</label>
-    <input type="date" class="form-control" id="inputEYear">
+    <input type="date" class="form-control" ng-model="expiredYear" id="inputEYear">
   </div>
   <div class="form-group col-md-2">
     <label for="inputDOB">Date of Birth</label>
-    <input type="date" class="form-control" id="inputDOB">
+    <input type="date" class="form-control" ng-model="dob" id="inputDOB">
   </div>
 </div>
   	<blockquote class="blockquote text-center">
@@ -93,11 +99,11 @@
   	<div class="form-row">
   	 <div class="form-group col-md-3">
     <label for="inputStart">Start Date</label>
-    <input type="date" class="form-control" id="inputStart" placeholder="12/02/1998">
+    <input type="date" class="form-control" ng-model="startDate" id="inputStart" placeholder="12/02/1998">
   </div>
    <div class="form-group col-md-3">
     <label for="inputReturn">Return Date</label>
-    <input type="date" class="form-control" id="inputReturn" placeholder="12/02/1998">
+    <input type="date" class="form-control" ng-model="returnDate" id="inputReturn" placeholder="12/02/1998">
   </div>
    <div class="form-group col-md-3">
     <label for="inputGas">Gas Level</label>
@@ -126,8 +132,57 @@
     <input type="number" class="form-control" ng-model="pTotal" id="inputPTotal" placeholder="Total Paid">
    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Save</button>
  </form>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+ <!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This Car Rental Agreement (“Agreement”) is entered into between KAIZEN AUTO BROKERS
+		LTD.(“Owner”) and Mark Prestwidge (“Renter”) (collectively the “Parties”) and outlines the respective
+		rights and obligations of the Parties relating to the rental of a car.</p>
+		<h5>1. IDENTIFICATION OF THE RENTAL VEHICLE</h5>
+		<p>Owner hereby agrees to rent to Renter a passenger vehicle identified as follows:</p>
+		<p>Type: <strong>{{type}}</strong>	Make and Model: <strong>{{vehicle}}</strong>	 Vehicle Number: 32 
+		Year: <strong>{{year}}</strong> 	Licence Plate and Chassis #: <strong>{{license}}</strong> 		Color: <strong>{{color}}</strong> </p>
+		<p>Insured by: General Accident
+		(Hereinafter referred to as “Rental Vehicle”).
+		</p>
+		<h5>2. RENTAL TERM</h5>
+	<p>The term of this Car Rental Agreement runs from the date and hour of vehicle pickup as indicated below until the return of the vehicle to Owner, and completion of all terms of this agreement by both Parties. The estimated rental term is as follows:<br/>
+	Estimated start date: <strong>{{startDate | date:"fullDate"}}</strong>	Estimated end date:	<strong>{{returnDate | date:"fullDate"}}</strong>
+	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup:  11:30 AM			
+	The Parties may shorten* or extend the estimate term of rental by mutual consent. 
+	*Owner reserves the right to shorten/end the agreement with the renter within valid reasoning. However, if the renter shortens the agreement less than 3 days they will not receive any refund.
+	Where this Agreement exceeds or is extended beyond 14 days, the Renter shall return the vehicle for a mandatory inspection. The process will be repeated every 14th day for the duration of this Agreement. A grace period of 2-days will be given in the event of special circumstances and based solely upon the discretion of the Owner. 
+	</p>
+	<h5>3. RENTAL CANCELLATION</h5>
+	<p>Owner requires a minimum of three (3) days’ notice for a full refund to be authorized otherwise, Renter forfeits equivalent of one day’s rental charge from monies paid.  
+	</p>
+	<h5>4. SCOPE OF USE</h5>
+	<p>Renter will use the Rented Vehicle only for personal or routine business use, and operate the Rented Vehicle only on properly maintained roads and parking lots.  Renter will comply with all applicable laws relating to holding of licensure to operate the vehicle, and pertaining to operation of motor vehicles.  Renter will not sublease the Rental Vehicle or use it as a vehicle for hire. <strong>Where Renter is found in breach of this clause, the Agreement will cease with immediate effect without refund of any fees, a fine of JMD $50,000.00 will be charged and the vehicle will be repossessed.</strong>
+	Renter will not allow any other person to operate the Rented Vehicle unless identified below. Additional drivers attract an additional driver surcharge of JMD $500.00 per rental day, each:
+	</p>
+	<p>Primary vehicle operator (Renter): <strong>{{name}}</strong>		Email: <strong>{{email}}</strong>
+	Driver’s Licence #: <strong>{{dLicence}}</strong>	Country of Issue: <strong>{{country}}</strong> 
+	Original issue year: <strong>{{issuedYear | date:"yyyy"}}</strong>	Expiry date: <strong>{{expiredYear | date:"longDate"}}</strong>
+	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong>
+</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 </body>

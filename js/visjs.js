@@ -1,6 +1,7 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 
+
 	$scope.gasLevel = ["Empty","Quarter","Half","Three Quarter","Full"];
     $scope.names = [
     "Basic", 
@@ -14,6 +15,7 @@ app.controller('myCtrl', function($scope) {
     $scope.oTotal = 0;
     $scope.type = "1";
     $scope.vehicle = "Select"
+    $scope.vNumber = 0;
 
     $scope.pCheck = function(){
            if ($scope.type == "Basic" && $scope.days != 0){
