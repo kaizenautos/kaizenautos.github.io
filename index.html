@@ -3,13 +3,30 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 	<script src ="js/visjs.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
- 
     $('#myModal').modal('show');
+    var doc = new jsPDF('p','pt','letter');
+    var save = function(quality = 1){
+    var elementHTML = $('#rental').html();
+	var specialElementHandlers = {
+    	'#elementH': function (element, renderer) {
+        	return true;
+    	}
+	};
 
+	doc.fromHTML(elementHTML, 5, 10, {
+    	'width': 600,
+    	'elementHandlers': specialElementHandlers
+	});
+
+	doc.save('rental-agreement.pdf');
+}
+// Save the PDF
 </script>
 </head>
 <body ng-app="myApp">
@@ -136,32 +153,35 @@
   <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
  <!-- Modal -->
 <div id="myModal" class="modal">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>This Car Rental Agreement (“Agreement”) is entered into between KAIZEN AUTO BROKERS
-		LTD.(“Owner”) and Mark Prestwidge (“Renter”) (collectively the “Parties”) and outlines the respective
+      <div class="modal-body" id="rental">
+      	<div id="content">
+      	<img src="media/images.png"><span id="title">Kaizen</span><br/>
+      	<hr>      	
+        <p>This Car Rental Agreement (“Agreement”) is entered into between<br/>KAIZEN AUTO BROKERS
+		LTD.(“Owner”) and {{name}} (“Renter”) (collectively the “Parties”)<br/> and outlines the respective
 		rights and obligations of the Parties relating to the rental of a car.</p>
 		<h5>1. IDENTIFICATION OF THE RENTAL VEHICLE</h5>
 		<p>Owner hereby agrees to rent to Renter a passenger vehicle identified as follows:</p>
 		<p>Type: <strong>{{type}}</strong>	Make and Model: <strong>{{vehicle}}</strong>	 Vehicle Number: 32 
 		Year: <strong>{{year}}</strong> 	Licence Plate and Chassis #: <strong>{{license}}</strong> 		Color: <strong>{{color}}</strong> </p>
-		<p>Insured by: General Accident
+		<p>Insured by: General Accident<br/>
 		(Hereinafter referred to as “Rental Vehicle”).
 		</p>
 		<h5>2. RENTAL TERM</h5>
-	<p>The term of this Car Rental Agreement runs from the date and hour of vehicle pickup as indicated below until the return of the vehicle to Owner, and completion of all terms of this agreement by both Parties. The estimated rental term is as follows:<br/>
+	<p>The term of this Car Rental Agreement runs from the date and hour of vehicle pickup as indicated below<br/> until the return of the vehicle to Owner, and completion of all terms of this agreement by both Parties.<br/> The estimated rental term is as follows:<br/>
 	Estimated start date: <strong>{{startDate | date:"fullDate"}}</strong>	Estimated end date:	<strong>{{returnDate | date:"fullDate"}}</strong>
 	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup:  11:30 AM			
-	The Parties may shorten* or extend the estimate term of rental by mutual consent. 
-	*Owner reserves the right to shorten/end the agreement with the renter within valid reasoning. However, if the renter shortens the agreement less than 3 days they will not receive any refund.
-	Where this Agreement exceeds or is extended beyond 14 days, the Renter shall return the vehicle for a mandatory inspection. The process will be repeated every 14th day for the duration of this Agreement. A grace period of 2-days will be given in the event of special circumstances and based solely upon the discretion of the Owner. 
+	The Parties may shorten* or extend the estimate term of rental by mutual consent.<br/>
+	*Owner reserves the right to shorten/end the agreement with the renter within valid reasoning.<br/> However, if the renter shortens the agreement less than 3 days they will not receive any refund.<br/>
+	Where this Agreement exceeds or is extended beyond 14 days, the Renter shall return the vehicle for a<br/> mandatory inspection. The process will be repeated every 14th day for the duration of this Agreement. A grace period of 2-days<br/> will be given in the event of special circumstances and based solely upon the discretion of the Owner. 
 	</p>
 	<h5>3. RENTAL CANCELLATION</h5>
 	<p>Owner requires a minimum of three (3) days’ notice for a full refund to be authorized otherwise, Renter forfeits equivalent of one day’s rental charge from monies paid.  
@@ -174,16 +194,18 @@
 	Driver’s Licence #: <strong>{{dLicence}}</strong>	Country of Issue: <strong>{{country}}</strong> 
 	Original issue year: <strong>{{issuedYear | date:"yyyy"}}</strong>	Expiry date: <strong>{{expiredYear | date:"longDate"}}</strong>
 	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong>
-</p>
+	</p>
+	</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="save()">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 </div>
 
+<div id="elementH"></div>
 </body>
 </html>

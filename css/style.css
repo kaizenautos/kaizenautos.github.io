@@ -1,0 +1,17 @@
+p{
+	font-family: cursive;
+}
+img{
+	width: 10%;
+	height: 10%;
+	margin-top: 10px;
+}
+#title{
+	float: right;
+	font-size: 40px;
+	font-weight: bold;
+	color: silver;
+}
+hr{
+	width: 5000px;
+}
