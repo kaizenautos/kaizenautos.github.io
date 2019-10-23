@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="js/bootstrap.min.js"></script>
-	
+
 	<script>
 	//Opens a new tab with the value from the div id rental
 	var openDoc = function(){
@@ -17,7 +17,7 @@
 		var myWindow = window.open();
 		var doc = myWindow.document;
 		doc.open();
-		doc.write("<img src='media/kaizen.jpg' style='width: 10%;height: 10%;margin-top: 10px;'><span style='float:right; color:silver;font-size: 30px;font-weight: bold;font-family:courier,arial,helvetica;' id='title'>Kaizen Auto Brokers</span>")
+		doc.write("<img src='media/kaizen.png' style='width: 10%;height:20%;margin-top: 10px;'><span style='float:right; color:silver;font-size: 30px;font-weight: bold;font-family:courier,arial,helvetica;margin-top:50px;' id='title'>Kaizen Auto Brokers</span>")
 		doc.write(divText);
 		doc.write("<button style='width:100px' onclick='window.print()'>Print</button>");
 		doc.close();
@@ -166,7 +166,7 @@
 		rights and obligations of the Parties relating to the rental of a car.</p>
 		<h5>1. IDENTIFICATION OF THE RENTAL VEHICLE</h5>
 		<p>Owner hereby agrees to rent to Renter a passenger vehicle identified as follows:</p>
-		<p>Type: <strong>{{type}}</strong>	Make and Model: <strong>{{vehicle}}</strong>	 Vehicle Number: 32 
+		<p>Type: <strong>{{type}}</strong>	Make and Model: <strong>{{vehicle}}</strong> 
 		Year: <strong>{{year}}</strong> 	Licence Plate and Chassis #: <strong>{{license}}</strong> 		Color: <strong>{{color}}</strong> </p>
 		<p>Insured by: General Accident
 		(Hereinafter referred to as “Rental Vehicle”).
