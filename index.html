@@ -8,45 +8,9 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="js/bootstrap.min.js"></script>
-
-	<style>
-		
-		p{
-	font-family: cursive;
-}
-img{
-	width: 10%;
-	height: 10%;
-	margin-top: 10px;
-}
-#title{
-	float: right;
-	font-size: 30px;
-	font-weight: bold;
-	color: silver;
-}
-	</style>
-	<script>
 	
-    $('#myModal').modal('show');
-    /*var doc = new jsPDF('p','pt','letter');
-    var save = function(quality = 1){
-    var elementHTML = $('#rental').html();
-	var specialElementHandlers = {
-    	'#elementH': function (element, renderer) {
-        	return true;
-    	}
-	};
-
-	doc.fromHTML(elementHTML, 5, 10, {
-    	'width': 600,
-    	'elementHandlers': specialElementHandlers
-	});
-
-	doc.save('rental-agreement.pdf');*/
-	var printDoc = function(){
-		window.print();
-	}
+	<script>
+	//Opens a new tab with the value from the div id rental
 	var openDoc = function(){
 		var divText = document.getElementById("myModal").outerHTML;
 		//var btn = document.getElementById("sBtn").outerHTML;
@@ -58,7 +22,6 @@ img{
 		doc.write("<button style='width:100px' onclick='window.print()'>Print</button>");
 		doc.close();
 	}
-// Save the PDF
 </script>
 </head>
 <body ng-app="myApp">
@@ -196,7 +159,7 @@ img{
       </div>
       <div class="modal-body" id="rental">
       	<div id="content">
-      	<!-- <img src="media/kaizen.jpg"><span id="title">Kaizen Auto Brokers</span> --><br/>
+      	<!-- <img src="media/kaizen.jpg"><span id="title">Kaizen Auto Brokers</span> -->
       	<hr>      	
         <p>This Car Rental Agreement (“Agreement”) is entered into between KAIZEN AUTO BROKERS
 		LTD.(“Owner”) and <strong>{{name}}</strong> (“Renter”) (collectively the “Parties”) and outlines the respective

@@ -19,7 +19,11 @@ app.controller('myCtrl', function($scope) {
     $scope.pCheck = function(){
            if ($scope.type == "Basic" && $scope.days != 0){
                    $scope.oTotal = 5500 * $scope.days;
-           }
+           }else if ($scope.type == "Standard" && $scope.days != 0){
+                   $scope.oTotal = 6000 * $scope.days;
+            }else if ($scope.type == "Premium" && $scope.days != 0){
+                   $scope.oTotal = 10500 * $scope.days;
+               }
     }
 
     $scope.myFunc = function(){
