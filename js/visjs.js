@@ -58,25 +58,25 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "6781HS"){
             $scope.vehicle = "Suzuki Swift";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2015";
             $scope.color = "Grey";
         }else if($scope.license == "6782HS"){
             $scope.vehicle = "Suzuki Swift";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2015";
             $scope.color = "Blue";
         }else if($scope.license == "6780HS"){
             $scope.vehicle = "Suzuki Swift";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2015";
             $scope.color = "Blue";
         }else if($scope.license == "6778HS"){
             $scope.vehicle = "Suzuki Swift";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2015";
             $scope.color = "Silver";
         }else if($scope.license == "0737HU"){
@@ -106,7 +106,7 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "0736HU"){
             $scope.vehicle = "Nissan Latio";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2013";
             $scope.color = "White";
         }else if($scope.license == "6080JA"){
@@ -118,25 +118,25 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "6331JA"){
             $scope.vehicle = "Toyota Axio";
             $scope.type = "Premium";
-            $scope.bFee = 8000;
+            $scope.bFee = 6500;
             $scope.year = "2015";
             $scope.color = "Grey";
         }else if($scope.license == "7012JA"){
             $scope.vehicle = "Toyota Axio";
             $scope.type = "Premium";
-            $scope.bFee = 8000;
+            $scope.bFee = 6500;
             $scope.year = "2015";
             $scope.color = "Silver";
         }else if($scope.license == "0829JB"){
             $scope.vehicle = "Honda CR-V";
             $scope.type = "Mid SUV";
-            $scope.bFee = 9000;
+            $scope.bFee = 12500;
             $scope.year = "2013";
             $scope.color = "Black";
         }else if($scope.license == "0738HU"){
             $scope.vehicle = "Nissan Bluebird Sylphy";
             $scope.type = "Premium";
-            $scope.bFee = 8000;
+            $scope.bFee = 6500;
             $scope.year = "2014";
             $scope.color = "Black";
         }else if($scope.license == "6403HS"){
@@ -166,13 +166,13 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "6402HS"){
             $scope.vehicle = "Nissan Bluebird Sylphy";
             $scope.type = "Premium";
-            $scope.bFee = 10500;
+            $scope.bFee = 6500;
             $scope.year = "2016";
             $scope.color = "Black";
         }else if($scope.license == "0742HU"){
             $scope.vehicle = "Honda Step Wagon";
             $scope.type = "8 Seater";
-            $scope.bFee = 12500;
+            $scope.bFee = 8500;
             $scope.year = "2013";
             $scope.color = "Black";
         }else if($scope.license == "7716JF"){
@@ -184,25 +184,25 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "3879HP"){
             $scope.vehicle = "Nissan Latio";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2015";
             $scope.color = "Grey";
         }else if($scope.license == "7105JD"){
             $scope.vehicle = "Nissan Latio";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2014";
             $scope.color = "Grey";
         }else if($scope.license == "3880HZ"){
             $scope.vehicle = "Toyota Axio";
             $scope.type = "Premium";
-            $scope.bFee = 8000;
+            $scope.bFee = 6500;
             $scope.year = "2013";
             $scope.color = "Grey";
         }else if($scope.license == "0793JE"){
             $scope.vehicle = "Subaru Impreza";
             $scope.type = "Special";
-            $scope.bFee = 8000;
+            $scope.bFee = 7500;
             $scope.year = "2014";
             $scope.color = "Grey";
         }else if($scope.license == "7115JF"){
@@ -214,7 +214,7 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "8763JE"){
             $scope.vehicle = "Nissan Bluebird Sylphy";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2014";
             $scope.color = "White";
         }else if($scope.license == "8730JE"){
@@ -226,19 +226,19 @@ app.controller('myCtrl', function($scope) {
         }else if($scope.license == "7340JD"){
             $scope.vehicle = "Nissan Latio";
             $scope.type = "Standard";
-            $scope.bFee = 6500;
+            $scope.bFee = 6000;
             $scope.year = "2014";
             $scope.color = "Grey";
         }else if($scope.license == "4213JG"){
             $scope.vehicle = "Toyota Allion";
             $scope.type = "Superior";
-            $scope.bFee = 8000;
+            $scope.bFee = 8500;
             $scope.year = "2014";
             $scope.color = "White";
         }else if($scope.license == "1765JH"){
             $scope.vehicle = "Subaru Impreza";
             $scope.type = "Special";
-            $scope.bFee = 8000;
+            $scope.bFee = 7500;
             $scope.year = "2014";
             $scope.color = "Black";
         }
