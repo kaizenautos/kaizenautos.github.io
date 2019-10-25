@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 	<script src ="js/visjs.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -29,6 +29,10 @@
   <span class="navbar-brand mb-0 h1">Kaizen Auto Form</span>
 </nav>
 <div ng-app="myApp" ng-controller="myCtrl">
+	<div class="center col-md-4">
+      <label for="inputName">Agent Name</label>
+      <input type="text" class="form-control" ng-model="agentName" id="agentName" placeholder="Your Name">
+    </div>
   <form>
   	<blockquote class="blockquote text-center">
   	<h1 class="display-4">Personal Information</h1>
@@ -78,34 +82,35 @@
   </blockquote>
 	<div class="form-row">
 
+    <div class="form-group col-md-2">
+      <label for="inputLicense">License Number</label>
+      <select id="inputLicense" class="form-control"  ng-change="mLinc()" ng-model="license" ng-options="y for y in mLicense">
+      </select>
+    </div>
   	  <div class="form-group col-md-2">
       <label for="inputType">Vehicle Type</label>
-      <select id="inputType" class="form-control" ng-change="myFunc()" ng-model="type" ng-options="x for x in names">
-      </select>
+      <input type="text" id="inputType" class="form-control" ng-model="type" disabled>
+      
     </div>
      <div class="form-group col-md-2">
       <label for="inputVehicle">Make and Model</label>
-      <select id="inputVehicle" class="form-control" ng-change="mLinc()" ng-model="vehicle" ng-options="y for y in model">
-      </select>
+      <input type="text" id="inputVehicle" class="form-control" ng-model="vehicle" disabled>
+      
     </div>
-      <div class="form-group col-md-2">
-      <label for="inputLicense">License Number</label>
-      <select id="inputLicense" class="form-control" ng-model="license" ng-options="y for y in mLicense">
-      </select>
-    </div>
+
      <div class="form-group col-md-2">
       <label for="inputYear">Year</label>
-      <select id="inputYear" class="form-control" ng-model="year" ng-options="y for y in mYear">
-      </select>
+      <input type="text" id="inputYear" class="form-control" ng-model="year" disabled>
+      
     </div>
      <div class="form-group col-md-2">
       <label for="inputColor">Color</label>
-      <select id="inputColor" class="form-control" ng-model="color" ng-options="y for y in mColor">
-      </select>
+      <input type="text" id="inputColor" class="form-control" ng-model="color" disabled>
+      
     </div>
          <div class="form-group col-md-2">
     	<label for="inputDays">No. of Days</label>
-    	<input type="number" class="form-control" ng-change="pCheck()"ng-model="days"id="inputDays" placeholder="3">
+    	<input type="number" class="form-control" ng-change="pCheck()" ng-model="days" id="inputDays" placeholder="3">
   	 </div>
   	</div>
   	<div class="form-row">
@@ -124,7 +129,7 @@
   </div>
    <div class="form-group col-md-2">
     <label for="inputMileage">Mileage</label>
-    <input type="text" class="form-control" id="inputMileage" placeholder="Mileage">
+    <input type="text" class="form-control" ng-model="mileage" id="inputMileage" placeholder="Mileage">
   </div>
 </div>
   	<blockquote class="blockquote text-center">
@@ -138,6 +143,10 @@
    <div class="form-group col-md-2">
        <label for="inputOTotal">Total Amount Owed</label>
     <input type="number" class="form-control" ng-model="oTotal" id="inputOTotal" disabled>
+   </div>
+     <div class="form-group col-md-2">
+       <label for="inputOTotal">Deposit Paid</label>
+    <input type="number" class="form-control" ng-model="oDeposit" id="inputDeposit">
    </div>
    <div class="form-group col-md-2">
        <label for="inputPTotal">Total Amount Paid</label>
@@ -186,11 +195,87 @@
 	<p>Renter will use the Rented Vehicle only for personal or routine business use, and operate the Rented Vehicle only on properly maintained roads and parking lots.  Renter will comply with all applicable laws relating to holding of licensure to operate the vehicle, and pertaining to operation of motor vehicles.  Renter will not sublease the Rental Vehicle or use it as a vehicle for hire. <strong>Where Renter is found in breach of this clause, the Agreement will cease with immediate effect without refund of any fees, a fine of JMD $50,000.00 will be charged and the vehicle will be repossessed.</strong>
 	Renter will not allow any other person to operate the Rented Vehicle unless identified below. Additional drivers attract an additional driver surcharge of JMD $500.00 per rental day, each:
 	</p>
-	<p>Primary vehicle operator (Renter): <strong>{{name}}</strong>		Email: <strong>{{email}}</strong>
-	Driver’s Licence #: <strong>{{dLicence}}</strong>	Country of Issue: <strong>{{country}}</strong> 
-	Original issue year: <strong>{{issuedYear | date:"yyyy"}}</strong>	Expiry date: <strong>{{expiredYear | date:"longDate"}}</strong>
+	<p>Primary vehicle operator (Renter): <strong>{{name}}</strong>		Email: <strong>{{email}}</strong><br/>
+	Driver’s Licence #: <strong>{{dLicence}}</strong>	Country of Issue: <strong>{{country}}</strong><br/>
+	Original issue year: <strong>{{issuedYear | date:"yyyy"}}</strong>	Expiry date: <strong>{{expiredYear | date:"longDate"}}</strong><br/>
 	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong>
 	</p>
+	<h5> 5. DRIVER AGE AND MINIMUM DRIVER’S LICENCE AGE</h5>
+	<p>It is strictly prohibited that anyone below the age of 21 years old operates or drives the Rental Vehicle. An age surcharge of JMD $500.00 per day will apply where the Renter is below the age of 25 years old. 
+	The driver’s licence must be 2 years or older to operate/drive the Rental Vehicle.</p>
+
+	<h5> 6. MILEAGE</h5>
+	<p>Mileage of the Rental Vehicle is <strong>{{mileage}}</strong> at the time of commencement of this Car Rental Agreement.  Mileage on the vehicle will be unlimited.</p>
+
+	<h5> 7. RENTAL FEES</h5>
+	<p>Renter will pay to Owner rental fees for use of the Rental Vehicle as follows:
+	Base fee: <strong>{{bFee|currency}}</strong> per Day<br/>
+	<i>*Only certain renters that meet specific criteria are allowed to have a rental vehicle for a year.</i><br/>
+	Additionally, if the vehicle is returned more than thirty minutes than the stated time on the date of return, an hourly rate of $500.00 will be charged.
+	Total Amount Owed: <strong>{{oTotal|currency}}</strong>	Total Amount Paid: <strong>{{pTotal|currency}}</strong>	Total Deposit Paid: <strong>{{oDeposit|currency}}</strong></p>
+
+ <p>All rental fees are due upon the signing of this Agreement. Fees related to extension of the rental should be paid in full before they are approved. Any outstanding balances including but not limited to, fees, fines, surcharges, costs incurred for repair or replacement of the parts or whole of the vehicle, should be paid within 5 business days of receipt of the bill or the end of the Agreement. The Owner reserves the right to contract a debt collector to retrieve any outstanding balances owed.</p>
+
+	<h5>8. FUEL</h5>
+	<p>Rental Vehicle will be rented with fuel level at: Half
+	Rental vehicle fuel must be returned at half tank or above, otherwise rental deposit will be forfeited (see Section 9). If rental vehicle is returned below quarter tank, an additional fuel surcharge of JMD $2,000.00 will be applied. No refund for fuel will be made on vehicles returning with fuel above half tank. </p>
+	<h5>SECURITY DEPOSIT</h5>
+	<p>Renter will be required to provide a security deposit to Owner in the amount of <strong>{{bFee|currency}}</strong> (“Security Deposit”) to be used in the event of loss or damage to the Rental Vehicle during the term of this agreement.  Owner may, in lieu of collection of a security deposit, place a hold on a credit card in the same amount.  In the event of damage to the Rental Vehicle, Owner will apply this Security Deposit to defray the costs of necessary repairs or replacement.  The Renter will be responsible for cost of damages or loss in full where no Partial Damage Waiver (see Section 10) is in place, Renter will be responsible for payment to the Owner of the balance of this cost.<br/><br/></p> 
+	<p>The Renter forfeits refund of the Security Deposit and will cover any overages in liability where a Partial Damage Waiver is not in place if the following criteria are not met:<br/>
+	i. Vehicles must be returned in a clean state inclusive of proper interior and exterior cleaning;<br/>
+   ii. No smoke or excessive odors should be detected in the vehicle. Smoking inside the vehicle is strictly prohibited;<br/>
+  iii. No pet hair or fur should be detected<br/>
+   iv. All vehicle accessories should be accounted for including floor mats and where included, fire extinguishers, spare tires, first aid kits, etc.;<br/>
+    v. Fuel level upon return should be at half or above;<br/>
+  vii. Vehicles should be returned without physical exterior damage, including but not limited to scrapes, dents, scratches, damaged or missing body parts, etc.;<br/>
+ viii. Vehicles should be returned without physical interior damage, including but not limited to dirty, stained or torn seats, dirty roof, broken or missing internal accessories, etc.;<br/>
+   ix. Vehicles should be returned without excessive mechanical damage, excluding typical wear and tear. If it is deemed that the Rental Vehicle has suffered excessive mechanical damage due to negligence on the part of the Renter, in addition to losing the Security Deposit and in lieu of a Partial Damage Waiver, they will be liable for full costs of repair to the damage, including but not limited to damaged or replaced parts, replacement of tires and/or rims due to negligent driving such as falling in potholes, riding curbs, etc.<br/>
+
+     The Security Deposit cannot be used to cover the cost of a rental or the rental fee. Refunds on Security Deposits are processed within 24 hours of the return of the Rental Vehicle.<br/></p> 
+
+     <h5>10. INSURANCE</h5>
+     <p>The Rental Vehicle is covered under Third Party Liability Insurance, which is included under the quoted rates, and as such provisions made will be within the range of what is offered under this pre-existing contract.  This does not include personal injury, damage or destruction to the Renter, passengers or other persons or properties, which will be the sole liability of the Renter or responsible party as per designation of fault by the Law. The Renter assumes full responsibility for making any personal claims arising out of accidents.</p>
+	<p>The Renter is responsible for the full value of the Rental Vehicle in the event of damage or loss. However, a Partial Damage Waiver* may be purchased that reduces the Renter’s financial liability in the event of loss or damage to the vehicle as long as there is compliance with the terms of the rental agreement. At the time of this Rental Agreement, the following Waiver Schedule was selected and paid for by the Renter:</p><br/>
+	<p>☐ JMD $500.00 per day for damages up to but not exceeding JMD $25,000.00<br/>
+	   ☐ JMD $1,000.00 per day for damages up to but not exceeding JMD $100,000.00<br/>
+	   ☐ JMD $2,000.00 per day for damages up to but not exceeding JMD $250,000.00</p><br/>
+	 <p>Where the cost of the damage, repair or replacement exceeds the amount covered by the Waiver Schedule selected, the Renter will be responsible for paying in full the difference between the Waiver cost and the cost of the repair or replacement.</p>
+<p><i>* The Partial Damage Waiver is not insurance and is not mandatory; therefore, the Waiver may be declined. However, if the Renter declines the Waiver, he/she is responsible in full for the cost of damage to the Rental Vehicle up to the full value of the vehicle. The Partial Damage Waiver does not cover lost tools, keys, remote entry devices or spare tires where applicable.</i></p><br/>
+
+	<h5> 11. PROCEDURES FOR DAMAGES TO RENTAL VEHICLE, ACCIDENTS, CONFISCATION, THEFT,  LOSS AND/OR REPOSSESSION</h5>
+<p>	Where the Rental Vehicle sustains any damages, including by not limited to, scratches, dents, damaged or destroyed interior or exterior body parts, it is the responsibility of the Renter to inform the Owner immediately and return the vehicle for a mandatory inspection and evaluation. No parts must be replaced without the consent and knowledge of the Owner. No repairs must be made to the vehicle without the consent and knowledge of the Owner.</p><br/>
+<p>The Owner reserves the right to select the Contractor responsible for vehicle repairs, evaluation, underwriting and/or assessments. Refunds will be governed as per designations by this Agreement.
+Where the Rental Vehicle is involved in an accident, the Renter is responsible for and should make a report to the Police immediately, following which they should inform the Owner and fill out an Accident Report Form as soon as possible. The Renter should inform the Owner immediately if the Rental Vehicle is confiscated by the Police or any other party, and will be liable for any charges related to confiscation, transport and/or release of the vehicle. 
+It is the responsibility of the Renter to secure the Rental Vehicle at all times. The Owner reserves the right to cease this Agreement immediately without refund of any fees paid should the vehicle be observed or reported to be in any situation that may result in damage, loss or theft of the vehicle. This includes but is not limited to, dangerous and reckless driving, unsecure parking, illegal activities, any breach or contravention of the Road Traffic Act, etc. If the vehicle is stolen, the Renter should inform the Owner immediately and the Agreement will cease with immediate effect. Any balance of fees paid will be refunded only upon proof that the Renter had taken adequate measures to secure the vehicle. 
+The Renter will be responsible in full for loss of the vehicle, unless a third party to this arrangement is deemed responsible and identified as liable for same. The Renter will owe in full the value of the Rental Vehicle minus any costs covered under the Partial Damage Waiver. 
+If for any reason the Owner has to disable and subsequently retrieve the Rental Vehicle, a fine of JMD $10,000.00 for areas within a 30 km radius of the office and JMD $15,000.00 for areas beyond a 30 km radius of the office will be charged for repossession and retrieval. This includes but is not limited to, non-payment of fees, threats to the safety and security of the vehicle, theft or accidents, excessive and repeated notifications of speeding, inquiry or direction by the Police and/or other law enforcement, etc.</p><br/>
+
+<h5> 12. INDEMNIFICATION</h5>
+<p>Renter agrees to indemnify, defend, and hold harmless the Owner for any loss, damage, or legal actions against Owner as a result of Renter’s operation or use of the Rental Vehicle during the term of this Car Rental Agreement.
+This includes any attorney fees necessarily incurred for these purposes. Renter will also pay for any parking tickets, moving violations, or other citations received while in possession of the Rental Vehicle.</p><br/>
+
+<h5>13. REPRESENTATIONS AND WARRANTIES</h5>
+<p>Owner represents and warrants that to Owner’s knowledge, the Rental Vehicle is in good condition and is safe for ordinary operation of the vehicle.
+Renter represents and warrants that Renter is legally entitled to operate a motor vehicle under the laws of this jurisdiction and will not operate it in violation of any laws, or in any negligent or illegal manner.
+Renter has been given an opportunity to examine the Rental Vehicle in advance of taking possession of it, and upon such inspection, is not aware of any damage existing on the vehicle other than that notated by the owner upon inspection prior to checkout. Therefore, renter is fully aware of the outward and inward physical appearance of the noted vehicle and will be liable for any damages that may be done to the vehicle while it is in the contractual period stipulated in this agreement.</p>
+
+	<h5>14. JURISDICTION AND VENUE</h5>
+ <p>In the event of any dispute over this agreement, this Car Rental Agreement will be interpreted by the laws of Jamaica.  If any portion of this agreement is found to be unenforceable by a court of competent jurisdiction, the remainder of the agreement would still have full force and effect.</p>
+
+<h5>15. ENTIRE AGREEMENT</h5>
+ <p>This Car Rental Agreement constitutes the entire agreement between the Parties with respect to this rental arrangement.  No modification to this agreement can be made unless in writing signed by both Parties.  Any notice required to be given to the other party will be made to the contact information below.</p>
+
+ 	 <br/>
+     <br/>
+    <p>Date of Agreement: <strong>{{date | date:"shortDate"}}</strong><br/>
+    <br/>
+	Kaizen Auto Brokers Representative: <strong>{{agentName}}</strong> 	   Rep Signature:  __________________________________________<br/>
+	<br/>
+	Renter Name: <strong>{{name}}</strong>		Renter Signature: _______________________________________	
+	</p><br/>
+	<p>By signing this Agreement above, the Renter confirms that he/she has read and agreed to pages 1 through _____ of this Agreement and has consented to all clauses and provisions herein.</p>
+
+
 	</div>
       </div>
     <!--   <div class="modal-footer">
