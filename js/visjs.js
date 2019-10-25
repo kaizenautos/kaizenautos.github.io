@@ -14,12 +14,17 @@ app.controller('myCtrl', function($scope) {
     $scope.days = 0;
     $scope.bFee = 0;
     $scope.oTotal = 0;
+    $scope.staff = "no"
     $scope.type = "1";
     $scope.vehicle = "Select"
     $scope.vNumber = 0;
   
     $scope.pCheck = function(){
-          $scope.oTotal = $scope.bFee * $scope.days;
+        if($scope.staff != "no"){
+          $scope.oTotal = ($scope.bFee*0.5) * $scope.days;
+        }else{
+            $scope.oTotal = $scope.bFee * $scope.days;
+        }
     }
 
 
