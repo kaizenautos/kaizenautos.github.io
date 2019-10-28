@@ -12,6 +12,9 @@ img{
 	font-weight: bold;
 	color: silver;
 }
+#rental{
+	display:none;
+}
 hr{
 	width: 5000px;
 }

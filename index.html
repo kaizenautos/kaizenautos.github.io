@@ -10,14 +10,15 @@
 	<script src="js/bootstrap.min.js"></script>
 
 	<script>
+		$('#myModal').show();
 	//Opens a new tab with the value from the div id rental
 	var openDoc = function(){
-		var divText = document.getElementById("myModal").outerHTML;
+		var divText = document.getElementById("rental").outerHTML;
 		//var btn = document.getElementById("sBtn").outerHTML;
 		var myWindow = window.open();
 		var doc = myWindow.document;
 		doc.open();
-		doc.write("<img src='media/kaizen.png' style='width: 10%;height:20%;margin-top: 10px;'><span style='float:right; color:silver;font-size: 30px;font-weight: bold;font-family:courier,arial,helvetica;margin-top:50px;' id='title'>Kaizen Auto Brokers</span>")
+		doc.write("<img src='media/kaizen.png' style='width: 19%;height:21%;'><span style='float:right; color:silver;font-size: 25px;font-weight: bold;font-family:courier,arial,helvetica;' id='title'>Kaizen Auto Brokers LTD<br/>Rental Agreement</span><hr>")
 		doc.write(divText);
 		doc.write("<button style='width:100px' onclick='window.print()'>Print</button>");
 		doc.close();
@@ -54,7 +55,7 @@
   <div class="form-row">
   <div class="form-group col-md-2">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="31 Balmoral Avenue">
+    <input type="text" class="form-control" ng-model="address" id="inputAddress" placeholder="31 Balmoral Avenue">
   </div>
     <div class="form-group col-md-2">
     <label for="inputID">Driver License Number</label>
@@ -77,6 +78,7 @@
     <input type="date" class="form-control" ng-model="dob" id="inputDOB">
   </div>
 </div>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Driver</button>
   	<blockquote class="blockquote text-center">
   	<h1 class="display-4">Rental Information</h1>
   </blockquote>
@@ -166,20 +168,72 @@
  </form>
   <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button> -->
   <button class="btn btn-primary" onclick="openDoc()">Save</button>
+  
  <!-- Modal -->
-<div id="myModal" class="modal">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+<div id="myModal" class="modal" role="dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Additional Driver</h5>
        <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
-      </div>
-      <div class="modal-body" id="rental">
-      	<div id="content">
+    	</div>
+    	<div class="modal-body">
+		    	<div class="form-row">
+				    <div class="form-group col-md-4">
+				      <label for="inputName">Name</label>
+				      <input type="text" class="form-control" ng-model="adname" id="inputName" placeholder="Full Name">
+				    </div>
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail">Email</label>
+				      <input type="email" class="form-control" ng-model="ademail" id="inputEmail" placeholder="Email">
+				    </div>
+				    <div class="form-group col-md-3">
+				      <label for="inputPhone">Phone Number</label>
+				      <input type="number" class="form-control" ng-model="adcontact" id="inputNumber" placeholder="876454688">
+				    </div>
+				</div>
+				<div class="form-row">
+				  <div class="form-group col-md-4">
+				    <label for="inputAddress">Address</label>
+				    <input type="text" class="form-control" ng-model="adaddress" id="inputAddress" placeholder="31 Balmoral Avenue">
+				  </div>
+				  <div class="form-group col-md-4">
+				    <label for="inputID">Driver License</label>
+				    <input type="text" class="form-control" ng-model="addLicence" id="inputID" placeholder="ID Number">
+				  </div>
+				  <div class="form-group col-md-4">
+				    <label for="inputCountry">Country of Issue</label>
+				    <input type="text" class="form-control" ng-model="adcountry" id="inputCountry">
+				  </div>
+				</div>
+				<div class="form-row">
+				  <div class="form-group col-md-4">
+				    <label for="inputIYear">Issued Year</label>
+				    <input type="date" class="form-control" ng-model="adissuedYear" id="inputIYear">
+				  </div>
+				  <div class="form-group col-md-4">
+				    <label for="inputEYear">Expiration Year</label>
+				    <input type="date" class="form-control" ng-model="adexpiredYear" id="inputEYear">
+				  </div>
+				  <div class="form-group col-md-4">
+				    <label for="inputDOB">Date of Birth</label>
+				    <input type="date" class="form-control" ng-model="addob" id="inputDOB">
+				  </div>
+				</div>
+			</div>
+		      <div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        		<button type="button" id="sBtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      		  </div>
+		</div>
+	</div>
+</div>
+
+      	<div id="rental">
       	<!-- <img src="media/kaizen.jpg"><span id="title">Kaizen Auto Brokers</span> -->
-      	<hr>      	
+      	     	
         <p>This Car Rental Agreement (“Agreement”) is entered into between KAIZEN AUTO BROKERS
 		LTD.(“Owner”) and <strong>{{name}}</strong> (“Renter”) (collectively the “Parties”) and outlines the respective
 		rights and obligations of the Parties relating to the rental of a car.</p>
@@ -193,7 +247,7 @@
 		<h5>2. RENTAL TERM</h5>
 	<p>The term of this Car Rental Agreement runs from the date and hour of vehicle pickup as indicated below until the return of the vehicle to Owner, and completion of all terms of this agreement by both Parties. The estimated rental term is as follows:
 	Estimated start date: <strong>{{startDate | date:"fullDate"}}</strong>	Estimated end date:	<strong>{{returnDate | date:"fullDate"}}</strong>
-	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup:  11:30 AM			
+	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup: <strong>{{startDate | date:"shortTime"}}</strong>			
 	The Parties may shorten* or extend the estimate term of rental by mutual consent.
 	*Owner reserves the right to shorten/end the agreement with the renter within valid reasoning. However, if the renter shortens the agreement less than 3 days they will not receive any refund.
 	Where this Agreement exceeds or is extended beyond 14 days, the Renter shall return the vehicle for a mandatory inspection. The process will be repeated every 14th day for the duration of this Agreement. A grace period of 2-days will be given in the event of special circumstances and based solely upon the discretion of the Owner. 
@@ -208,7 +262,14 @@
 	<p>Primary vehicle operator (Renter): <strong>{{name}}</strong>		Email: <strong>{{email}}</strong><br/>
 	Driver’s Licence #: <strong>{{dLicence}}</strong>	Country of Issue: <strong>{{country}}</strong><br/>
 	Original issue year: <strong>{{issuedYear | date:"yyyy"}}</strong>	Expiry date: <strong>{{expiredYear | date:"longDate"}}</strong><br/>
-	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong>
+	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong><br/>
+	Address: <strong>{{address}}</strong>
+	</p>
+	<p>Additional Driver 1: <strong>{{adname}}</strong> Email: <strong>{{ademail}}</strong><br/>
+		Driver’s Licence #: <strong>{{addLicense}}</strong>	Country of Issue: <strong>{{adcountry}}</strong><br/>
+		Original issue year: <strong>{{adissuedYear}}</strong> Expiry date: <strong>{{adexpiredYear}}</strong><br/>
+		Date of Birth: <strong>{{addob}}</strong> Contact Number: <strong>{{adcontact}}</strong><br/>
+		Address: <strong>{{adaddress}}</strong><br/>
 	</p>
 	<h5> 5. DRIVER AGE AND MINIMUM DRIVER’S LICENCE AGE</h5>
 	<p>It is strictly prohibited that anyone below the age of 21 years old operates or drives the Rental Vehicle. An age surcharge of JMD $500.00 per day will apply where the Renter is below the age of 25 years old. 
@@ -286,16 +347,8 @@ Renter has been given an opportunity to examine the Rental Vehicle in advance of
 	<p>By signing this Agreement above, the Renter confirms that he/she has read and agreed to pages 1 through _____ of this Agreement and has consented to all clauses and provisions herein.</p>
 
 
-	</div>
-      </div>
-    <!--   <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="sBtn" class="btn btn-primary" onclick="printDoc()">Save changes</button>
-      </div> -->
+
     </div>
-  </div>
-</div>
-</div>
 
 <div id="elementH"></div>
 </body>
