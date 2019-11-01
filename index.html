@@ -124,7 +124,11 @@
     <label for="inputReturn">Return Date</label>
     <input type="date" class="form-control" ng-model="returnDate" id="inputReturn" placeholder="12/02/1998">
   </div>
-   <div class="form-group col-md-3">
+<!--    <div class="form-group col-md-2">
+    <label for="inputTime">Start Time</label>
+    <select class="form-control" ng-model="time" id="inputTime" placeholder="10:00AM" ng-options="x for x in rentTime"></select>
+  </div> -->
+   <div class="form-group col-md-2">
     <label for="inputGas">Gas Level</label>
     <select class="form-control" id="inputGas" ng-model="gas"    ng-options="x for x in gasLevel">
     </select>
@@ -165,6 +169,15 @@
     <input type="number" class="form-control" ng-model="pTotal" id="inputPTotal" placeholder="Total Paid">
    </div>
   </div>
+  <div class="form-row">
+  <div class="form-group col-md-3">
+  </div>
+   <div class="form-group col-md-4">
+    <label for="inputWaiver">Waiver</label>
+    <select class="form-control" id="inputWaiver" ng-model="waiver" ng-options="x for x in waiverSchedule">
+    </select>
+  </div>
+</div>
  </form>
   <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button> -->
   <button class="btn btn-primary" onclick="openDoc()">Save</button>
@@ -225,7 +238,7 @@
 			</div>
 		      <div class="modal-footer">
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        		<button type="button" id="sBtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        		<button type="button" id="sBtn" ng-click = "add()" class="btn btn-primary" data-dismiss="modal">Save changes</button>
       		  </div>
 		</div>
 	</div>
@@ -247,7 +260,7 @@
 		<h5>2. RENTAL TERM</h5>
 	<p>The term of this Car Rental Agreement runs from the date and hour of vehicle pickup as indicated below until the return of the vehicle to Owner, and completion of all terms of this agreement by both Parties. The estimated rental term is as follows:
 	Estimated start date: <strong>{{startDate | date:"fullDate"}}</strong>	Estimated end date:	<strong>{{returnDate | date:"fullDate"}}</strong>
-	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup: <strong>{{startDate | date:"shortTime"}}</strong>			
+	Total Number of Days: <strong>{{days}}</strong>		Time of Vehicle Pickup: <strong>{{date | date:"shortTime"}}</strong>			
 	The Parties may shorten* or extend the estimate term of rental by mutual consent.
 	*Owner reserves the right to shorten/end the agreement with the renter within valid reasoning. However, if the renter shortens the agreement less than 3 days they will not receive any refund.
 	Where this Agreement exceeds or is extended beyond 14 days, the Renter shall return the vehicle for a mandatory inspection. The process will be repeated every 14th day for the duration of this Agreement. A grace period of 2-days will be given in the event of special circumstances and based solely upon the discretion of the Owner. 
@@ -265,12 +278,12 @@
 	Date of Birth: <strong>{{dob | date:"longDate"}}</strong> 		Contact Number: <strong>{{contact}}</strong><br/>
 	Address: <strong>{{address}}</strong>
 	</p>
-	<p>Additional Driver 1: <strong>{{adname}}</strong> Email: <strong>{{ademail}}</strong><br/>
-		Driver’s Licence #: <strong>{{addLicense}}</strong>	Country of Issue: <strong>{{adcountry}}</strong><br/>
-		Original issue year: <strong>{{adissuedYear}}</strong> Expiry date: <strong>{{adexpiredYear}}</strong><br/>
-		Date of Birth: <strong>{{addob}}</strong> Contact Number: <strong>{{adcontact}}</strong><br/>
-		Address: <strong>{{adaddress}}</strong><br/>
+	
+	<p ng-repeat="x in adNameA">
+		{{x}}
 	</p>
+	
+
 	<h5> 5. DRIVER AGE AND MINIMUM DRIVER’S LICENCE AGE</h5>
 	<p>It is strictly prohibited that anyone below the age of 21 years old operates or drives the Rental Vehicle. An age surcharge of JMD $500.00 per day will apply where the Renter is below the age of 25 years old. 
 	The driver’s licence must be 2 years or older to operate/drive the Rental Vehicle.</p>
@@ -293,33 +306,31 @@
 	<h5>SECURITY DEPOSIT</h5>
 	<p>Renter will be required to provide a security deposit to Owner in the amount of <strong>{{bFee|currency}}</strong> (“Security Deposit”) to be used in the event of loss or damage to the Rental Vehicle during the term of this agreement.  Owner may, in lieu of collection of a security deposit, place a hold on a credit card in the same amount.  In the event of damage to the Rental Vehicle, Owner will apply this Security Deposit to defray the costs of necessary repairs or replacement.  The Renter will be responsible for cost of damages or loss in full where no Partial Damage Waiver (see Section 10) is in place, Renter will be responsible for payment to the Owner of the balance of this cost.<br/><br/></p> 
 	<p>The Renter forfeits refund of the Security Deposit and will cover any overages in liability where a Partial Damage Waiver is not in place if the following criteria are not met:<br/>
-	i. Vehicles must be returned in a clean state inclusive of proper interior and exterior cleaning;<br/>
-   ii. No smoke or excessive odors should be detected in the vehicle. Smoking inside the vehicle is strictly prohibited;<br/>
-  iii. No pet hair or fur should be detected<br/>
-   iv. All vehicle accessories should be accounted for including floor mats and where included, fire extinguishers, spare tires, first aid kits, etc.;<br/>
-    v. Fuel level upon return should be at half or above;<br/>
-  vii. Vehicles should be returned without physical exterior damage, including but not limited to scrapes, dents, scratches, damaged or missing body parts, etc.;<br/>
- viii. Vehicles should be returned without physical interior damage, including but not limited to dirty, stained or torn seats, dirty roof, broken or missing internal accessories, etc.;<br/>
-   ix. Vehicles should be returned without excessive mechanical damage, excluding typical wear and tear. If it is deemed that the Rental Vehicle has suffered excessive mechanical damage due to negligence on the part of the Renter, in addition to losing the Security Deposit and in lieu of a Partial Damage Waiver, they will be liable for full costs of repair to the damage, including but not limited to damaged or replaced parts, replacement of tires and/or rims due to negligent driving such as falling in potholes, riding curbs, etc.<br/>
+	<p style="margin-left: 40px;">i. Vehicles must be returned in a clean state inclusive of proper interior and exterior cleaning;<br/><br/>
+   ii. No smoke or excessive odors should be detected in the vehicle. Smoking inside the vehicle is strictly prohibited;<br/><br/>
+  iii. No pet hair or fur should be detected<br/><br/>
+   iv. All vehicle accessories should be accounted for including floor mats and where included, fire extinguishers, spare tires, first aid kits, etc.;<br/><br/>
+    v. Fuel level upon return should be at half or above;<br/><br/>
+  vii. Vehicles should be returned without physical exterior damage, including but not limited to scrapes, dents, scratches, damaged or missing body parts, etc.;<br/><br/>
+ viii. Vehicles should be returned without physical interior damage, including but not limited to dirty, stained or torn seats, dirty roof, broken or missing internal accessories, etc.;<br/><br/>
+   ix. Vehicles should be returned without excessive mechanical damage, excluding typical wear and tear. If it is deemed that the Rental Vehicle has suffered excessive mechanical damage due to negligence on the part of the Renter, in addition to losing the Security Deposit and in lieu of a Partial Damage Waiver, they will be liable for full costs of repair to the damage, including but not limited to damaged or replaced parts, replacement of tires and/or rims due to negligent driving such as falling in potholes, riding curbs, etc.</p><br/><br/>
 
      The Security Deposit cannot be used to cover the cost of a rental or the rental fee. Refunds on Security Deposits are processed within 24 hours of the return of the Rental Vehicle.<br/></p> 
 
      <h5>10. INSURANCE</h5>
      <p>The Rental Vehicle is covered under Third Party Liability Insurance, which is included under the quoted rates, and as such provisions made will be within the range of what is offered under this pre-existing contract.  This does not include personal injury, damage or destruction to the Renter, passengers or other persons or properties, which will be the sole liability of the Renter or responsible party as per designation of fault by the Law. The Renter assumes full responsibility for making any personal claims arising out of accidents.</p>
 	<p>The Renter is responsible for the full value of the Rental Vehicle in the event of damage or loss. However, a Partial Damage Waiver* may be purchased that reduces the Renter’s financial liability in the event of loss or damage to the vehicle as long as there is compliance with the terms of the rental agreement. At the time of this Rental Agreement, the following Waiver Schedule was selected and paid for by the Renter:</p><br/>
-	<p>☐ JMD $500.00 per day for damages up to but not exceeding JMD $25,000.00<br/>
-	   ☐ JMD $1,000.00 per day for damages up to but not exceeding JMD $100,000.00<br/>
-	   ☐ JMD $2,000.00 per day for damages up to but not exceeding JMD $250,000.00</p><br/>
+	<p>{{waiver}}</p><br/>
 	 <p>Where the cost of the damage, repair or replacement exceeds the amount covered by the Waiver Schedule selected, the Renter will be responsible for paying in full the difference between the Waiver cost and the cost of the repair or replacement.</p>
 <p><i>* The Partial Damage Waiver is not insurance and is not mandatory; therefore, the Waiver may be declined. However, if the Renter declines the Waiver, he/she is responsible in full for the cost of damage to the Rental Vehicle up to the full value of the vehicle. The Partial Damage Waiver does not cover lost tools, keys, remote entry devices or spare tires where applicable.</i></p><br/>
 
 	<h5> 11. PROCEDURES FOR DAMAGES TO RENTAL VEHICLE, ACCIDENTS, CONFISCATION, THEFT,  LOSS AND/OR REPOSSESSION</h5>
 <p>	Where the Rental Vehicle sustains any damages, including by not limited to, scratches, dents, damaged or destroyed interior or exterior body parts, it is the responsibility of the Renter to inform the Owner immediately and return the vehicle for a mandatory inspection and evaluation. No parts must be replaced without the consent and knowledge of the Owner. No repairs must be made to the vehicle without the consent and knowledge of the Owner.</p><br/>
-<p>The Owner reserves the right to select the Contractor responsible for vehicle repairs, evaluation, underwriting and/or assessments. Refunds will be governed as per designations by this Agreement.
-Where the Rental Vehicle is involved in an accident, the Renter is responsible for and should make a report to the Police immediately, following which they should inform the Owner and fill out an Accident Report Form as soon as possible. The Renter should inform the Owner immediately if the Rental Vehicle is confiscated by the Police or any other party, and will be liable for any charges related to confiscation, transport and/or release of the vehicle. 
-It is the responsibility of the Renter to secure the Rental Vehicle at all times. The Owner reserves the right to cease this Agreement immediately without refund of any fees paid should the vehicle be observed or reported to be in any situation that may result in damage, loss or theft of the vehicle. This includes but is not limited to, dangerous and reckless driving, unsecure parking, illegal activities, any breach or contravention of the Road Traffic Act, etc. If the vehicle is stolen, the Renter should inform the Owner immediately and the Agreement will cease with immediate effect. Any balance of fees paid will be refunded only upon proof that the Renter had taken adequate measures to secure the vehicle. 
-The Renter will be responsible in full for loss of the vehicle, unless a third party to this arrangement is deemed responsible and identified as liable for same. The Renter will owe in full the value of the Rental Vehicle minus any costs covered under the Partial Damage Waiver. 
-If for any reason the Owner has to disable and subsequently retrieve the Rental Vehicle, a fine of JMD $10,000.00 for areas within a 30 km radius of the office and JMD $15,000.00 for areas beyond a 30 km radius of the office will be charged for repossession and retrieval. This includes but is not limited to, non-payment of fees, threats to the safety and security of the vehicle, theft or accidents, excessive and repeated notifications of speeding, inquiry or direction by the Police and/or other law enforcement, etc.</p><br/>
+<p>The Owner reserves the right to select the Contractor responsible for vehicle repairs, evaluation, underwriting and/or assessments. Refunds will be governed as per designations by this Agreement.<br/>
+Where the Rental Vehicle is involved in an accident, the Renter is responsible for and should make a report to the Police immediately, following which they should inform the Owner and fill out an Accident Report Form as soon as possible.<br/> The Renter should inform the Owner immediately if the Rental Vehicle is confiscated by the Police or any other party, and will be liable for any charges related to confiscation, transport and/or release of the vehicle.<br/>
+It is the responsibility of the Renter to secure the Rental Vehicle at all times. The Owner reserves the right to cease this Agreement immediately without refund of any fees paid should the vehicle be observed or reported to be in any situation that may result in damage, loss or theft of the vehicle.<br/> This includes but is not limited to, dangerous and reckless driving, unsecure parking, illegal activities, any breach or contravention of the Road Traffic Act, etc. If the vehicle is stolen, the Renter should inform the Owner immediately and the Agreement will cease with immediate effect.<br/> Any balance of fees paid will be refunded only upon proof that the Renter had taken adequate measures to secure the vehicle. 
+The Renter will be responsible in full for loss of the vehicle, unless a third party to this arrangement is deemed responsible and identified as liable for same.<br/> The Renter will owe in full the value of the Rental Vehicle minus any costs covered under the Partial Damage Waiver. 
+If for any reason the Owner has to disable and subsequently retrieve the Rental Vehicle, a fine of JMD $10,000.00 for areas within a 30 km radius of the office and JMD $15,000.00 for areas beyond a 30 km radius of the office will be charged for repossession and retrieval.<br/> This includes but is not limited to, non-payment of fees, threats to the safety and security of the vehicle, theft or accidents, excessive and repeated notifications of speeding, inquiry or direction by the Police and/or other law enforcement, etc.</p><br/>
 
 <h5> 12. INDEMNIFICATION</h5>
 <p>Renter agrees to indemnify, defend, and hold harmless the Owner for any loss, damage, or legal actions against Owner as a result of Renter’s operation or use of the Rental Vehicle during the term of this Car Rental Agreement.
@@ -345,8 +356,26 @@ Renter has been given an opportunity to examine the Rental Vehicle in advance of
 	Renter Name: <strong>{{name}}</strong>		Renter Signature: _______________________________________	
 	</p><br/>
 	<p>By signing this Agreement above, the Renter confirms that he/she has read and agreed to pages 1 through _____ of this Agreement and has consented to all clauses and provisions herein.</p>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<h4 style="margin-left: 20%;"><strong>Consent Form for Credit Check/Reporting</strong></h4><br/><br/>
+<p>Date: <strong>{{date | date:"shortDate"}}</strong><br/><br/>
+To:	The Credit Bureau<br/><br/>
+Re: Access to and Disclosure of Credit Information by Kaizen Auto Brokers Ltd
+I, Click here to enter Renter’s Full Name of Click here to enter Renter’s Address with Tax Registration Number Click here to enter TRN , hereby authorize and freely consent to allowing <strong>Kaizen Auto Brokers Ltd</strong> to obtain from, and disclose to, any personal information about myself as necessary in connection with the processing of a credit application, collection and/or investigation of any such loans, outstanding sums and/or financial obligations I may have with <strong>Kaizen Auto Brokers Ltd</strong> as a result of this Agreement.<br/><br/> This includes, without limitation the receipt and exchange of credit related information about myself with any credit reporting agency, credit bureau, and any person or corporation with whom I had, have or may have financial relations, which includes, but is not limited to, past, present and future places of employment, financial institutions and personal reporting agencies.<br/> 
+Therefore, I hereby consent: <br/><br/>
+	a)To the disclosure to <strong>Kaizen Auto Brokers Ltd</strong> such credit information which one or more credit bureaus duly licensed under the Credit Reporting Act (“the Credit Bureau”) may have in regard to me;<br/><br/>
+	b)To <strong>Kaizen Auto Brokers Ltd</strong> providing the said credit information and this signed consent form to the Credit Bureau by electronics means; <br/><br/>
+	c)To the Credit Bureau providing the said information to <strong>Kaizen Auto Brokers Ltd</strong> by electronic means. I understand and agree that my consent which is hereby given: <br/><br/>
+		<p style="margin-left: 40px;">i)Shall come into effect immediately upon the transition of any overdue amounts or additional charges incurred as a result of signed Rental Agreement with <strong>Kaizen Auto Brokers Ltd</strong>, owing in excess of (five) 5 business days from stipulated due date;<br/><br/>
+		ii)Shall subsist for the duration of my application for this or any future credit facility that I may have or apply for with <strong>Kaizen Auto Brokers Ltd</strong> and for so long as this credit facility or such future credit facility shall subsist;<br/><br/>
+		iii)Shall remain valid and binding unless it is expressly revoked by me; <br/><br/>
+		iv)Cannot be revoked during the subsistence of any credit facility that I may have with <strong>Kaizen Auto Brokers Ltd</strong> but only upon or after termination of such facility;<br/> <br/>
+		v)Will be applicable to all applications that I make to obtain a credit facility from <strong>Kaizen Auto Brokers Ltd</strong> where I am involved in that application either as the Renter, co-renter, or surety/guarantor and also for the purpose of facilitating risk assessment for granting further extension of credit by <strong>Kaizen Auto Brokers Ltd</strong> in relation to any credit facility currently existing or which may come into existence in the future.</p> <br/><br/>
+
+Name of Renter/Owing Party:  <strong>{{name}}</strong>		Signature: _________________________________________________________
 
 
+</p>
 
     </div>
 

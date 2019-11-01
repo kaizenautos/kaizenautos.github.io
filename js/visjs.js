@@ -1,6 +1,19 @@
+/***
+Name: Akeim Sutherland
+Project: Kaizen Rental Form
+Version: 1.0
+Latest Update Date: 10/30/2019
+
+**/
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
+
+    //variable initialization and declaration
+    var num =1;
+    $scope.adNameA=[];
+    $scope.adEmailA=[];
     $scope.date = Date.now();
+    //an array of the license plates and the chassis number
     $scope.mLicense = ["1765JH|GP2020521","6041HR|DE3FS533673","2560HN|SC11309649",
     "3875HP|Y12140655","7886HQ|CWEFW145124","6626HSCWEFWN115188","6781HS|ZC72S357606","6782HS|ZC72S358148",
     "6780HS|ZC72S359285","6778HS|ZC72S357718","0737HU|CWFFW129341","0740HU|E123303386",
@@ -11,25 +24,61 @@ app.controller('myCtrl', function($scope) {
      "7105JD|N17011223","3880HZ|NRE1607005245","0793JE|GJ2006757","7115JF|Y12167893",
      "8763JE|TB17016992","8730JE|Y12168082", "7340JD|N17009162","4213JG|ZRT2613022809","1765JH|GP2020521"];
 
+     $scope.addl ="binded text";
+     //an array of the waiver options available when renting a vehicle
+     $scope.waiverSchedule = ["☐ JMD $500.00 per day for damages up to but not exceeding JMD $25,000.00", 
+     "☐ JMD $1,000.00 per day for damages up to but not exceeding JMD $100,000.00",
+     "☐ JMD $2,000.00 per day for damages up to but not exceeding JMD $250,000.00"];
+     //and array for the gas level
 	$scope.gasLevel = ["Empty","Quarter","Half","Three Quarter","Full"];
+    //an array for the rental times
+    $scope.rentTime = ["7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM",
+    "1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM"];
+
+    //trying to figure out how to do the additional drivers without a database, by using an array. Gonna need to do some research
+    
+    $scope.add = function(){
+        
+        $scope.adNameA.push( "Additional Driver"+num+": "+$scope.adname+" \nEmail: "+$scope.ademail+" \nAddress: "+$scope.adaddress+
+            "  License Number: "+$scope.addLicence+" Country: "+$scope.adcountry+" Original issue year: "+$scope.adissuedYear
+            +" Expired Year: "+$scope.adexpiredYear+" Date of birth: "+$scope.addob+"/"
+            +$scope.addob+"/"+$scope.addob+" Contact: "+$scope.adcontact);
+
+
+        
+       //$scope.adEmailA.push("Email: "+$scope.ademail);
+      /*  $scope.adAddressA.push("Address: "+$scope.adaddress);
+        $scope.addLicenseA.push("Email: "+$scope.addLicense);
+        $scope.adCountryA.push("Email: "+$scope.adcountry);
+        $scope.adContactA.push("Email: "+$scope.adcontact);
+        $scope.adDobA.push("Email: "+$scope.addob);*/
+  /*  $scope.additionalDriver = "Additional Driver 1: "+$scope.adname+
+        " Email: "+$scope.ademail+
+        "Driver’s Licence #: "+$scope.addLicense+"  Country of Issue: "+ $scope.adcountry+
+        "Original issue year: "+$scope.adissuedYear+" Expiry date: "+$scope.adexpiredYear+
+        "Date of Birth: "+$scope.addob+" Contact Number: "+$scope.adcontact+
+        "Address: "+$scope.adaddress;*/
+        //$scope.oTotal += 500*$scope.days;
+        num++;
+    }
 
     $scope.days = 0;
     $scope.bFee = 0;
     $scope.oTotal = 0;
-    $scope.staff = "no"
+    $scope.staff = 0
     $scope.type = "1";
     $scope.vehicle = "Select"
     $scope.vNumber = 0;
-  
+     //this calcuates the staff discount if the staff checkbox is selected
     $scope.pCheck = function(){
-        if($scope.staff != "no"){
+        if($scope.staff != 0){
           $scope.oTotal = ($scope.bFee*0.5) * $scope.days;
         }else{
             $scope.oTotal = $scope.bFee * $scope.days;
         }
     }
 
-
+    //this fills out the vehicle information based on the license/chassis number selected
     $scope.mLinc = function(){
     	if($scope.license == "6041HR|DE3FS533673"){
             $scope.vehicle = "Mazda Demio";
@@ -43,7 +92,7 @@ app.controller('myCtrl', function($scope) {
             $scope.type = "Basic";
             $scope.bFee = 5500;
             $scope.year = "2011";
-            $scope.yolor = "Silver";
+            $scope.color = "Silver";
         }else if($scope.license == "3875HP|Y12140655"){
             $scope.vehicle = "Nissan Wingroad";
             $scope.type = "Basic";
@@ -56,7 +105,7 @@ app.controller('myCtrl', function($scope) {
             $scope.bFee = 7500;
             $scope.year = "2012";
             $scope.color = "Black";
-        }else if($scope.license == "6626HSCWEFWN115188"){
+        }else if($scope.license == "6626HS|CWEFWN115188"){
             $scope.vehicle = "Nissan Lafesta";
             $scope.type = "Family Size";
             $scope.bFee = 7500;
