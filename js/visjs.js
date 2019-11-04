@@ -40,9 +40,9 @@ app.controller('myCtrl', function($scope) {
     $scope.add = function(){
         
         $scope.adNameA.push( "Additional Driver"+num+": "+$scope.adname+" \nEmail: "+$scope.ademail+" \nAddress: "+$scope.adaddress+
-            "  License Number: "+$scope.addLicence+" Country: "+$scope.adcountry+" Original issue year: "+$scope.adissuedYear
-            +" Expired Year: "+$scope.adexpiredYear+" Date of birth: "+$scope.addob+"/"
-            +$scope.addob+"/"+$scope.addob+" Contact: "+$scope.adcontact);
+            "  Driver's License #: "+$scope.addLicence+" Country of Issue: "+$scope.adcountry+" Original issue year: "+$scope.adissuedYear.getFullYear()
+            +" Expired Year: "+$scope.adexpiredYear.getFullYear()+" Date of birth: "+$scope.addob.getMonth()+"/"
+            +$scope.addob.getDate()+"/"+$scope.addob.getFullYear()+" Contact: "+$scope.adcontact);
 
 
         
