@@ -2,14 +2,14 @@
 Name: Akeim Sutherland
 Project: Kaizen Rental Form
 Version: 1.0
-Latest Update Date: 10/30/2019
+Latest Update Date: 11/5/2019
 
 **/
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 
     //variable initialization and declaration
-    var num =1;
+    var num =0;
     $scope.adNameA=[];
     $scope.adEmailA=[];
     $scope.date = Date.now();
@@ -38,7 +38,7 @@ app.controller('myCtrl', function($scope) {
     //trying to figure out how to do the additional drivers without a database, by using an array. Gonna need to do some research
     
     $scope.add = function(){
-        
+        num++;
         $scope.adNameA.push( "Additional Driver"+num+": "+$scope.adname+" \nEmail: "+$scope.ademail+" \nAddress: "+$scope.adaddress+
             "  Driver's License #: "+$scope.addLicence+" Country of Issue: "+$scope.adcountry+" Original issue year: "+$scope.adissuedYear.getFullYear()
             +" Expired Year: "+$scope.adexpiredYear.getFullYear()+" Date of birth: "+$scope.addob.getMonth()+"/"
@@ -73,8 +73,9 @@ app.controller('myCtrl', function($scope) {
     $scope.pCheck = function(){
         if($scope.staff != 0){
           $scope.oTotal = ($scope.bFee*0.5) * $scope.days;
-        }else{
-            $scope.oTotal = $scope.bFee * $scope.days;
+        }
+        else{
+            $scope.oTotal = $scope.bFee * $scope.days +(500*num);
         }
     }
 
