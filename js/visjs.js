@@ -72,10 +72,10 @@ app.controller('myCtrl', function($scope) {
      //this calcuates the staff discount if the staff checkbox is selected
     $scope.pCheck = function(){
         if($scope.staff != 0){
-          $scope.oTotal = ($scope.bFee*0.5) * $scope.days;
+          $scope.oTotal = $scope.bfee+($scope.bFee*0.5) * $scope.days;
         }
         else{
-            $scope.oTotal = $scope.bFee * $scope.days +(500*num);
+            $scope.oTotal = $scope.bFee + $scope.bFee * $scope.days +(500*num);
         }
     }
 
