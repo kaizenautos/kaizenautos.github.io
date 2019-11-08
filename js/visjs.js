@@ -14,7 +14,7 @@ app.controller('myCtrl', function($scope) {
     $scope.adEmailA=[];
     $scope.date = Date.now();
     //an array of the license plates and the chassis number
-    $scope.mLicense = ["1765JH|GP2020521","6041HR|DE3FS533673","2560HN|SC11309649",
+    $scope.mLicense = ["1765JH|GP2020521","6041HR|DE3FS533673","2560HN|SC11309649","6049HV|RK51352613",
     "3875HP|Y12140655","7886HQ|CWEFW145124","6626HS|CWEFWN115188","6781HS|ZC72S357606","6782HS|ZC72S358148",
     "6780HS|ZC72S359285","6778HS|ZC72S357718","0737HU|CWFFW129341","0740HU|E123303386",
     "0739HU|E12099052","0736HU|N17004823","6080JA|3CZRU6H55GM728512","6331JA|NRE1607011824",
@@ -298,6 +298,12 @@ app.controller('myCtrl', function($scope) {
             $scope.bFee = 7500;
             $scope.year = "2014";
             $scope.color = "Black";
+        }else if($scope.license == "6049HV|RK51352613"){
+            $scope.vehicle = "Honda StepWagon";
+            $scope.type = "8 seater";
+            $scope.bFee = 8500;
+            $scope.year = "2013";
+            $scope.color = "Grey";
         }
 
     };
