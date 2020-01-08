@@ -5,38 +5,87 @@ Version: 1.0
 Latest Update Date: 11/5/2019
 
 **/
+
+
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 
     //variable initialization and declaration
     var num =0;
+    var bearer = "Bearer _yE7xvc8ohF8PqT8LNKnttDZBllk_SI-uKn4F5GSR9lkGUyQh1gb4qR8Mov0BoAm-y2KLP6aiNGKYLko683DIn33Gms-zn4EJVUb-9K2_TccmkU0Wrt3uUPeGWAjlA9fsuMNELeYoWtT2_46Tw15xNyopEaz2OdYrn19huOZlyrq9JvDOgjvltzY05quMaR0ZgurEl8025mUa_uBTtBhkKTiuNJIZoTsbuINS0sy8KuLHxJ6QaEoQgCbrrd7sekZ3acOFFv39pTqe2t9k4iLjr1xXF2GOyuPAunoEF-TOJJrBfLmmgcsEGdeNTX8hWL1YIMAzpOpsTIi5e8E0aVpm5qTiJJ8yYX3OxBuzYLKKz5arHrr0leaq8io4b9bpsGpE8N-4bw4tHjuEtC-ytFeyxt0_Fuukak0FY6QRVNuco6qrNExU-MtEeGglS97OAuw8leQ8SIKt15qDOq5PznzkWPXo-ZtbX7db7Ztpd-kWCRkghTDQzkpW-zLNArOy3NEnUGcu7b9_tOR40VKdymOXpbsnGbr8KveNxI7O8bp0tVhijsL6DUCG0GHT3o2__Uq3hRK8BuZ5fl-iAdaziXoIdWzgBpaa_EWgLyCBcwnwtpBcSMPc9r2Sp4lU8RbcUyFPQx_v0Yi8Y1VyN8DMGyyTZEIULzLuVj3wKi4bLFSN_3gKxWI_QB5zshY5Kq9BaW6P80PF-5SVP2Tf1tTPPraSVkvjeMFH-yTMEhwlikZTOHzsCrkc1h_QACAqmqxqNrNM4dBm8Fg2klRNKjuWK5HJ_ZRb3U_Y611W51ciQJQ-DMDtwhXZT4loPLib8kTxzbcnyLgu-QRTHsYhOLK9Z6fvqbdN59ExXn54I-0-jdxnyaZZU8dRiNSBhwhBPleQw-NBZFjvh_1qWXEvIijD1Xh3mWCjfZMRkFfWf-Njnh5uzfuyLYdT65w7lGFDP7DUzKFf7Y07B4Dud5qSM3z7tbdsB6YHvqCVL76HXODKzojZz_uagkPF3NESKqd-Hz8aswZ1yBIa7d3lBrtX3ZBP6ljqtcEsB30kCkJm8j9GOG976pHYUNBEbprNrPcIXjqTkH788O-X8rJFJRJqZLdOignXNJ5OoLNVJ_IUtQE8QtiJozXwFuFS2PQg4P-Zai_uET_6oGavdvihKFMC9p4DMNiNTXMHtNVCQ_97i1AEv978eeOasdTmhL6Pzn5sK5vojZh6RBlG5rWiPumb08K0kgvJ-l7yh2G_HOt6PBo5JJuv1IRMI8aPguYqzvjmgPeutKJlbE0Rx6dAOMYCcYX03dDhwvkdYtKtQkhVJJbL5oX36d-Zj7v4WnOdj1YcRt60tfb_LR9mz4eiociHIIZZribshXl6d_Y0JtVlHsenrh5N2O8g6XAu0DqvP1A7mBZ10t2Xr9Ej_wvqlUYm9Q2n7uCklOzRuj9hvZvPbdhIh9rE_w5_2Iv0YfckXzB-8wiz4oa2Oa1y9zcKVZBYtu7sEz8qtg3PTwTPavaOPVv8GS5mT838eKz-PlcH5gtgkYjXVtEhb2rX2iKRYlzb7vczyxPqmPMFsefLokKWvLvSrRjYgaGH9txN7Hsyu5Ex4vMrS9HPvutQJa6rF8zdeADyI4rYIZ7A7fYKj1TT0EHJ6FAH6MK_-X7uYg94EOxQyEQdpsxAZRcFulB9jq-vfnTg5YCy7n814Z0BLhP2NZCYwcHFdeaXvgrLBbv9-9bQRe9XvjRQ5orAv8nPTbFMbclTbiEgrRhgVSyltMfYCo_zoh4tir4yZB8PTSnbGKGfdfozVwRbWj02OasFMCCCxAsyMONITOauYQKVraHpbGhy6hxy3jMWIed6zcAUo41MKFlYr6mPREoI7LnfXLwQQ3dRnwnBsmmIrjTnHX2BtXVeX3Hny2nbecVMRcP2dZNYHzNUMOARpsrquvj7EPIbNExY1-iodVS34oXbdCgEwp6pc6w1I2UILFGRJIiI2lvOXvETPUecwzb1CbNph3sk8V_sW1itGzzH0AG-cLnlgxOneRMWVMbewuvz5XWkvWNYG2OjRtjKAZSNaB8dRL7n2un_63vTs_T8KnlsgePI_XZSOwtJvs"
     $scope.adNameA=[];
     $scope.adEmailA=[];
     $scope.date = Date.now();
-    //an array of the license plates and the chassis number
-    $scope.mLicense = ["1765JH|GP2020521","6041HR|DE3FS533673","2560HN|SC11309649","6049HV|RK51352613",
-    "3875HP|Y12140655","7886HQ|CWEFW145124","6626HS|CWEFWN115188","6781HS|ZC72S357606","6782HS|ZC72S358148",
-    "6780HS|ZC72S359285","6778HS|ZC72S357718","0737HU|CWFFW129341","0740HU|E123303386",
-    "0739HU|E12099052","0736HU|N17004823","6080JA|3CZRU6H55GM728512","6331JA|NRE1607011824",
-    "7012JA|NRE1607012508","0829JB|RM11103729","0738HU|TB17018746","6403HS|GRS2106007470",
-     "4293JA|E1162774","6119HX|GE61709554","3876HP|GRX1306068229","6402HS|TB17026941",
-     "0742HU|RK11319874","7716JF|N26B20AA5991253","3879HP|N17702037",
-     "7105JD|N17011223","3880HZ|NRE1607005245","0793JE|GJ2006757","7115JF|Y12167893",
-     "8763JE|TB17016992","8730JE|Y12168082", "7340JD|N17009162","4213JG|ZRT2613022809","1765JH|GP2020521"];
-
+     $scope.customerID ="";
      $scope.addl ="binded text";
      //an array of the waiver options available when renting a vehicle
      $scope.waiverSchedule = ["☐ JMD $500.00 per day for damages up to but not exceeding JMD $25,000.00", 
      "☐ JMD $1,000.00 per day for damages up to but not exceeding JMD $100,000.00",
      "☐ JMD $2,000.00 per day for damages up to but not exceeding JMD $250,000.00"];
-     //and array for the gas level
-	$scope.gasLevel = ["Empty","Quarter","Half","Three Quarter","Full"];
-    //an array for the rental times
-    $scope.rentTime = ["7:00AM","8:00AM","9:00AM","10:00AM","11:00AM","12:00PM",
-    "1:00PM","2:00PM","3:00PM","4:00PM","5:00PM","6:00PM","7:00PM","8:00PM"];
 
-    //trying to figure out how to do the additional drivers without a database, by using an array. Gonna need to do some research
+
+
+    $scope.checkAgreement = function(){
+        var settings = {
+  "url": "https://app.navotar.com/api/Agreement/GetAgreement?agreementId="+$scope.agreementID,
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": bearer
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  $scope.agreement = response;
+  //$scope.agentName = $scope.agreement.agreementDetail.createdByName;
+  $scope.name = $scope.agreement.agreementDetail.firstName+" "+$scope.agreement.agreementDetail.lastName;
+  $scope.email = $scope.agreement.agreementDetail.email;
+  $scope.contact = $scope.agreement.agreementDetail.hPhone;
+  $scope.dLicence = $scope.agreement.agreementDetail.customerLicenseNumber;
+  $scope.country = $scope.agreement.agreementDetail.countryName;
+  $scope.address = $scope.agreement.agreementDetail.address1;
+  $scope.type = $scope.agreement.agreementDetail.vehicleType;
+  $scope.vehicle = $scope.agreement.agreementDetail.vehicleMakeName+"  "+$scope.agreement.agreementDetail.modelName;
+  $scope.year = $scope.agreement.agreementDetail.year;
+  $scope.license = $scope.agreement.agreementDetail.licenseNo;
+
+  $scope.days = $scope.agreement.agreementDetail.totalDays;
+  $scope.startDate = $scope.agreement.agreementDetail.checkoutDate;
+  $scope.returnDate = $scope.agreement.agreementDetail.checkinDate;
+  $scope.issuedYear = $scope.agreement.agreementDetail.licenseIssueDate;
+  $scope.expiredYear = $scope.agreement.agreementDetail.licenseExpiryDate;
+
+  $scope.bFee = $scope.agreement.agreementDetail.dailyRate;
+  $scope.oTotal = $scope.agreement.agreementDetail.totalAmount;
+  $scope.pTotal = $scope.agreement.agreementDetail.amountPaid;
+  $scope.oDeposit = $scope.agreement.agreementDetail.deposit;
+  $scope.mileage = $scope.agreement.agreementDetail.currentOdometer
+
+  $scope.customerID = $scope.agreement.agreementDetail.customerId;
+  $scope.checkCustomer($scope.customerID);
+ 
+});
     
+    }
+
+$scope.checkCustomer = function(id){
+        var settings = {
+  "url": "https://app.navotar.com/api/Customer/GetCustomer?customerId="+id,
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": bearer
+      },
+    };
+
+    $.ajax(settings).done(function (response) {
+    $scope.dob = response.dateOfbirth;
+    });
+ }
+
+
+
     $scope.add = function(){
         num++;
         $scope.adNameA.push( "Additional Driver"+num+": "+$scope.adname+" \nEmail: "+$scope.ademail+" \nAddress: "+$scope.adaddress+
@@ -44,269 +93,11 @@ app.controller('myCtrl', function($scope) {
             +" Expired Year: "+$scope.adexpiredYear.getFullYear()+" Date of birth: "+$scope.addob.getMonth()+"/"
             +$scope.addob.getDate()+"/"+$scope.addob.getFullYear()+" Contact: "+$scope.adcontact);
 
-
-        
-       //$scope.adEmailA.push("Email: "+$scope.ademail);
-      /*  $scope.adAddressA.push("Address: "+$scope.adaddress);
-        $scope.addLicenseA.push("Email: "+$scope.addLicense);
-        $scope.adCountryA.push("Email: "+$scope.adcountry);
-        $scope.adContactA.push("Email: "+$scope.adcontact);
-        $scope.adDobA.push("Email: "+$scope.addob);*/
-  /*  $scope.additionalDriver = "Additional Driver 1: "+$scope.adname+
-        " Email: "+$scope.ademail+
-        "Driver’s Licence #: "+$scope.addLicense+"  Country of Issue: "+ $scope.adcountry+
-        "Original issue year: "+$scope.adissuedYear+" Expiry date: "+$scope.adexpiredYear+
-        "Date of Birth: "+$scope.addob+" Contact Number: "+$scope.adcontact+
-        "Address: "+$scope.adaddress;*/
-        //$scope.oTotal += 500*$scope.days;
         num++;
     }
 
-    $scope.days = 0;
-    $scope.bFee = 0;
-    $scope.oTotal = 0;
-    $scope.staff = 0
-    $scope.type = "1";
-    $scope.vehicle = "Select"
-    $scope.vNumber = 0;
-     //this calcuates the staff discount if the staff checkbox is selected
-    $scope.pCheck = function(){
-        if($scope.staff != 0){
-          $scope.oTotal = ($scope.bFee + $scope.bFee*$scope.days) * 0.5;
-        }
-        else{
-            $scope.oTotal = $scope.bFee + $scope.bFee * $scope.days +(500*num);
-        }
-    }
-
-    //this fills out the vehicle information based on the license/chassis number selected
-    $scope.mLinc = function(){
-    	if($scope.license == "6041HR|DE3FS533673"){
-            $scope.vehicle = "Mazda Demio";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-    		$scope.year = "2012";
-			$scope.color = "White";
-
-    	}else if($scope.license == "2560HN|SC11309649"){
-            $scope.vehicle = "Nissan Tiida";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2011";
-            $scope.color = "Silver";
-        }else if($scope.license == "3875HP|Y12140655"){
-            $scope.vehicle = "Nissan Wingroad";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2012";
-            $scope.color = "Silver";
-        }else if($scope.license == "7886HQ|CWEFW145124"){
-            $scope.vehicle = "Mazda Premacy";
-            $scope.type = "Family Size";
-            $scope.bFee = 7500;
-            $scope.year = "2012";
-            $scope.color = "Black";
-        }else if($scope.license == "6626HS|CWEFWN115188"){
-            $scope.vehicle = "Nissan Lafesta";
-            $scope.type = "Family Size";
-            $scope.bFee = 7500;
-            $scope.year = "2012";
-            $scope.color = "Black";
-        }else if($scope.license == "6781HS|ZC72S357606"){
-            $scope.vehicle = "Suzuki Swift";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2015";
-            $scope.color = "Grey";
-        }else if($scope.license == "6782HS|ZC72S358148"){
-            $scope.vehicle = "Suzuki Swift";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2015";
-            $scope.color = "Blue";
-        }else if($scope.license == "6780HS|ZC72S359285"){
-            $scope.vehicle = "Suzuki Swift";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2015";
-            $scope.color = "Blue";
-        }else if($scope.license == "6778HS|ZC72S357718"){
-            $scope.vehicle = "Suzuki Swift";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2015";
-            $scope.color = "Silver";
-        }else if($scope.license == "0737HU|CWFFW129341"){
-            $scope.vehicle = "Mazda Premacy";
-            $scope.type = "Family Size";
-            $scope.bFee = 7500;
-            $scope.year = "2015";
-            $scope.color = "Brown";
-        }else if($scope.license == "0740HU|E123303386"){
-            $scope.vehicle = "Nissan Note";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2015";
-            $scope.color = "Black";
-        }else if($scope.license == "1915HU|E12417063"){
-            $scope.vehicle = "Nissan Note";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2015";
-            $scope.color = "Red";
-        }else if($scope.license == "0739HU|E12099052"){
-            $scope.vehicle = "Nissan Note";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2013";
-            $scope.color = "Red";
-        }else if($scope.license == "0736HU|N17004823"){
-            $scope.vehicle = "Nissan Latio";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2013";
-            $scope.color = "White";
-        }else if($scope.license == "6080JA|3CZRU6H55GM728512"){
-            $scope.vehicle = "Honda HRV";
-            $scope.type = "Compact SUV";
-            $scope.bFee = 10500;
-            $scope.year = "2016";
-            $scope.color = "Blue";
-        }else if($scope.license == "6331JA|NRE1607011824"){
-            $scope.vehicle = "Toyota Axio";
-            $scope.type = "Premium";
-            $scope.bFee = 6500;
-            $scope.year = "2015";
-            $scope.color = "Grey";
-        }else if($scope.license == "7012JA|NRE1607012508"){
-            $scope.vehicle = "Toyota Axio";
-            $scope.type = "Premium";
-            $scope.bFee = 6500;
-            $scope.year = "2015";
-            $scope.color = "Silver";
-        }else if($scope.license == "0829JB|RM11103729"){
-            $scope.vehicle = "Honda CR-V";
-            $scope.type = "Mid SUV";
-            $scope.bFee = 12500;
-            $scope.year = "2013";
-            $scope.color = "Black";
-        }else if($scope.license == "0738HU|TB17018746"){
-            $scope.vehicle = "Nissan Bluebird Sylphy";
-            $scope.type = "Premium";
-            $scope.bFee = 6500;
-            $scope.year = "2014";
-            $scope.color = "Black";
-        }else if($scope.license == "6403HS|GRS2106007470"){
-            $scope.vehicle = "Toyota Crown";
-            $scope.type = "Luxury Entry Level";
-            $scope.bFee = 12500;
-            $scope.year = "2013";
-            $scope.color = "Black";
-        }else if($scope.license == "4293JA|E1162774"){
-            $scope.vehicle = "Nissan Note";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2012";
-            $scope.color = "Grey";
-        }else if($scope.license == "6119HX|GE61709554"){
-            $scope.vehicle = "Honda Fit";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2012";
-            $scope.color = "Black";
-        }else if($scope.license == "3876HP|GRX1306068229"){
-            $scope.vehicle = "Toyoya Mark X";
-            $scope.type = "Luxury Entry Level";
-            $scope.bFee = 12500;
-            $scope.year = "2013";
-            $scope.color = "Grey";
-        }else if($scope.license == "6402HS|TB17026941"){
-            $scope.vehicle = "Nissan Bluebird Sylphy";
-            $scope.type = "Premium";
-            $scope.bFee = 6500;
-            $scope.year = "2016";
-            $scope.color = "Black";
-        }else if($scope.license == "0742HU|RK11319874"){
-            $scope.vehicle = "Honda Step Wagon";
-            $scope.type = "8 Seater";
-            $scope.bFee = 8500;
-            $scope.year = "2013";
-            $scope.color = "Black";
-        }else if($scope.license == "7716JF|N26B20AA5991253"){
-            $scope.vehicle = "BMW 428i";
-            $scope.type = "Luxury Mid Level";
-            $scope.bFee = 26000;
-            $scope.year = "2016";
-            $scope.color = "Black";
-        }else if($scope.license == "3879HP|N17702037"){
-            $scope.vehicle = "Nissan Latio";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2015";
-            $scope.color = "Grey";
-        }else if($scope.license == "7105JD|N17011223"){
-            $scope.vehicle = "Nissan Latio";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2014";
-            $scope.color = "Grey";
-        }else if($scope.license == "3880HZ|NRE1607005245"){
-            $scope.vehicle = "Toyota Axio";
-            $scope.type = "Premium";
-            $scope.bFee = 6500;
-            $scope.year = "2013";
-            $scope.color = "Grey";
-        }else if($scope.license == "0793JE|GJ2006757"){
-            $scope.vehicle = "Subaru Impreza";
-            $scope.type = "Special";
-            $scope.bFee = 7500;
-            $scope.year = "2014";
-            $scope.color = "Grey";
-        }else if($scope.license == "7115JF|Y12167893"){
-            $scope.vehicle = "Nissan Wingroad";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2014";
-            $scope.color = "Grey";
-        }else if($scope.license == "8763JE|TB17016992"){
-            $scope.vehicle = "Nissan Bluebird Sylphy";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2014";
-            $scope.color = "White";
-        }else if($scope.license == "8730JE|Y12168082"){
-            $scope.vehicle = "Nissan Wingroad";
-            $scope.type = "Basic";
-            $scope.bFee = 5500;
-            $scope.year = "2014";
-            $scope.color = "White";
-        }else if($scope.license == "7340JD|N17009162"){
-            $scope.vehicle = "Nissan Latio";
-            $scope.type = "Standard";
-            $scope.bFee = 6000;
-            $scope.year = "2014";
-            $scope.color = "Grey";
-        }else if($scope.license == "4213JG|ZRT2613022809"){
-            $scope.vehicle = "Toyota Allion";
-            $scope.type = "Superior";
-            $scope.bFee = 8500;
-            $scope.year = "2014";
-            $scope.color = "White";
-        }else if($scope.license == "1765JH|GP2020521"){
-            $scope.vehicle = "Subaru Impreza";
-            $scope.type = "Special";
-            $scope.bFee = 7500;
-            $scope.year = "2014";
-            $scope.color = "Black";
-        }else if($scope.license == "6049HV|RK51352613"){
-            $scope.vehicle = "Honda StepWagon";
-            $scope.type = "8 seater";
-            $scope.bFee = 8500;
-            $scope.year = "2013";
-            $scope.color = "Grey";
-        }
-
-    };
+  
+   
 
   
   

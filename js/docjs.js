@@ -6,7 +6,7 @@
 		var myWindow = window.open();
 		var doc = myWindow.document;
 		doc.open();
-		doc.write("<img src='media/kaizen.png' style='width: 19%;height:21%;'><span style='float:right; color:silver;font-size: 25px;font-weight: bold;font-family:courier,arial,helvetica;' id='title'>Kaizen Auto Brokers LTD<br/>Rental Agreement</span><hr>")
+		doc.write("<img src='media/kaizen.png' style='width: 19%;height:21%;'><span style='float:right; color:silver;font-size: 25px;font-weight: bold;font-family:times new roman;' id='title'>Kaizen Auto Brokers LTD<br/>Rental Agreement</span><hr>")
 		doc.write(divText);
 		doc.write("<button style='width:100px' onclick='window.print()'>Print</button>");
 		doc.close();

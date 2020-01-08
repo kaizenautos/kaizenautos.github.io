@@ -12,25 +12,36 @@
 
 
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp"  ng-controller="myCtrl">
 <nav class="navbar navbar-dark bg-primary text-center">
   <span class="navbar-brand mb-0 h1">Kaizen Auto Form</span>
 </nav>
-<div ng-app="myApp" ng-controller="myCtrl">
-	<div class="center col-md-4">
+ <div ng-app="myApp">
+<!-- 	<div class="center col-md-4">
       <label for="inputName">Agent Name</label>
       <input type="text" class="form-control" ng-model="agentName" id="agentName" placeholder="Your Name">
-    </div>
+    </div> -->
   <form>
   	<blockquote class="blockquote text-center">
-  	<h1 class="display-4">Personal Information</h1>
+  	<h1 class="display-4">Agreement Information</h1>
   </blockquote>
   <div class="form-row">
+  	  <div class="form-group col-md-2">
+    <label for="inputDOB">Agent Name</label>
+    <input type="text" class="form-control" ng-model="agentName" id="agent">
+  </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputName">Agreement ID Number</label>
+      <input type="text" class="form-control" ng-model="agreementID" id="inputAgreement" placeholder="Agreement ID Number" ng-change="checkAgreement()">
+    </div>
+</div></form>
+ <!--  <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputName">Name</label>
       <input type="text" class="form-control" ng-model="name" id="inputName" placeholder="Full Name">
-    </div>
-    <div class="form-group col-md-4">
+    </div> -->
+   <!--  <div class="form-group col-md-4">
       <label for="inputEmail">Email</label>
       <input type="email" class="form-control" ng-model="email" id="inputEmail" placeholder="Email">
     </div>
@@ -51,8 +62,8 @@
    <div class="form-group col-md-2">
     <label for="inputCountry">Country of Issue</label>
     <input type="text" class="form-control" ng-model="country" id="inputCountry">
-  </div>
-   <div class="form-group col-md-2">
+  </div> -->
+  <!--  <div class="form-group col-md-2">
     <label for="inputIYear">Issued Year</label>
     <input type="date" class="form-control" ng-model="issuedYear" id="inputIYear">
   </div>
@@ -60,10 +71,7 @@
     <label for="inputEYear">Expiration Year</label>
     <input type="date" class="form-control" ng-model="expiredYear" id="inputEYear">
   </div>
-  <div class="form-group col-md-2">
-    <label for="inputDOB">Date of Birth</label>
-    <input type="date" class="form-control" ng-model="dob" id="inputDOB">
-  </div>
+
 </div>
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Driver</button>
   	<blockquote class="blockquote text-center">
@@ -75,8 +83,8 @@
       <label for="inputLicense">License Plate and Chassis #</label>
       <select id="inputLicense" class="form-control"  ng-change="mLinc()" ng-model="license" ng-options="y for y in mLicense">
       </select>
-    </div>
-  	  <div class="form-group col-md-2">
+    </div> -->
+  <!-- 	  <div class="form-group col-md-2">
       <label for="inputType">Vehicle Type</label>
       <input type="text" id="inputType" class="form-control" ng-model="type" disabled>
       
@@ -91,8 +99,8 @@
       <label for="inputYear">Year</label>
       <input type="text" id="inputYear" class="form-control" ng-model="year" disabled>
       
-    </div>
-     <div class="form-group col-md-2">
+    </div> -->
+  <!--    <div class="form-group col-md-2">
       <label for="inputColor">Color</label>
       <input type="text" id="inputColor" class="form-control" ng-model="color" disabled>
       
@@ -110,11 +118,11 @@
    <div class="form-group col-md-3">
     <label for="inputReturn">Return Date</label>
     <input type="date" class="form-control" ng-model="returnDate" id="inputReturn" placeholder="12/02/1998">
-  </div>
-<!--    <div class="form-group col-md-2">
+  </div> -->
+<!--     <div class="form-group col-md-2">
     <label for="inputTime">Start Time</label>
     <select class="form-control" ng-model="time" id="inputTime" placeholder="10:00AM" ng-options="x for x in rentTime"></select>
-  </div> -->
+  </div> 
    <div class="form-group col-md-2">
     <label for="inputGas">Gas Level</label>
     <select class="form-control" id="inputGas" ng-model="gas"    ng-options="x for x in gasLevel">
@@ -136,8 +144,8 @@
     		<input type="checkbox" class="custom-control-input" id="defaultUnchecked" ng-model="staff" ng-change="pCheck()">
     		<label class="custom-control-label" for="defaultUnchecked">Staff</label>
 		</div>
-  	</div>
-  	<div class="form-group col-md-1">
+  	</div> -->
+  	<!-- <div class="form-group col-md-1">
   	</div>
    <div class="form-group col-md-2">
     <label for="inputBaseFee">Base Fee</label>
@@ -158,7 +166,7 @@
   </div>
   <div class="form-row">
   <div class="form-group col-md-3">
-  </div>
+  </div> -->
    <div class="form-group col-md-4">
     <label for="inputWaiver">Waiver</label>
     <select class="form-control" id="inputWaiver" ng-model="waiver" ng-options="x for x in waiverSchedule">
@@ -166,8 +174,9 @@
   </div>
 </div>
  </form>
-  <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button> -->
+   <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Additional Driver</button>
   <button class="btn btn-primary" onclick="openDoc()">Save</button>
+ 
   
  <!-- Modal -->
 <div id="myModal" class="modal" role="dialog">
@@ -175,9 +184,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Additional Driver</h5>
-       <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button> -->
+        </button>
     	</div>
     	<div class="modal-body">
 		    	<div class="form-row">
@@ -229,7 +238,7 @@
       		  </div>
 		</div>
 	</div>
-</div>
+</div> 
 
       	<div id="rental">
       	<!-- <img src="media/kaizen.jpg"><span id="title">Kaizen Auto Brokers</span> -->
