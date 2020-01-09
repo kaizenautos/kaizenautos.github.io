@@ -53,7 +53,7 @@ $.ajax(settings).done(function (response) {
   $scope.days = $scope.agreement.agreementDetail.totalDays;
   $scope.startDate = $scope.agreement.agreementDetail.checkoutDate;
   $scope.returnDate = $scope.agreement.agreementDetail.checkinDate;
-  $scope.issuedYear = $scope.agreement.agreementDetail.licenseIssueDate;
+  
   $scope.expiredYear = $scope.agreement.agreementDetail.licenseExpiryDate;
 
   $scope.bFee = $scope.agreement.agreementDetail.dailyRate;
